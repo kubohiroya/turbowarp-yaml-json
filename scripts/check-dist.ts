@@ -26,7 +26,7 @@ if (stdout.length > 0) {
   process.exitCode = 1;
 }
 
-async function gitCommandSucceeds(args) {
+async function gitCommandSucceeds(args: string[]): Promise<boolean> {
   try {
     await execFileAsync('git', args, {cwd: repositoryRoot});
     return true;
