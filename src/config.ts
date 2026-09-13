@@ -2,7 +2,7 @@ export const extensionConfig = {
   id: 'kubohiroyayamljson',
   slug: 'turbowarp-yaml-json',
   name: 'TurboWarp YAML/JSON',
-  description: 'Build YAML and JSON documents with immutable reporter blocks.',
+  description: 'Safely parse or build YAML and JSON data with immutable reporter blocks.',
   author: 'Hiroya Kubo',
   license: 'MPL-2.0',
   unsandboxed: false,
