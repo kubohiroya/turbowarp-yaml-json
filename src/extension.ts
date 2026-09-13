@@ -8,12 +8,16 @@ import {
   nullValue,
   numberValue,
   pair,
+  parseData,
   renderJson,
   renderYaml,
   sequence,
   stringValue,
   validateWithJsonSchema,
-  type DataFragment
+  type DataFragment,
+  type ParseDiagnostic,
+  type ParseFormat,
+  type ResolvedParseFormat
 } from './yaml-json';
 
 type BlockTypeName = 'REPORTER' | 'BOOLEAN';
@@ -22,6 +26,7 @@ type ArgumentTypeName = 'STRING' | 'NUMBER' | 'BOOLEAN';
 interface DefinitionArgument {
   type: ArgumentTypeName;
   defaultValue: string | number | boolean;
+  menu?: string;
 }
 
 interface BlockDefinition {
@@ -32,17 +37,44 @@ interface BlockDefinition {
   arguments: Record<string, DefinitionArgument>;
 }
 
+interface MenuDefinition {
+  acceptReporters: boolean;
+  items: string[];
+}
+
+interface LastParseState {
+  success: boolean;
+  format: ResolvedParseFormat | '';
+  diagnostic: ParseDiagnostic | null;
+}
+
 const SERIALIZED_PREFIX = 'turbowarp-yaml-json:v1:';
 const blockDefinitions = definitions.blocks as readonly BlockDefinition[];
+const menuDefinitions = definitions.menus as Record<string, MenuDefinition>;
 
 export class YamlJsonExtension implements TurboWarpExtension {
+  private lastParse: LastParseState = {
+    success: false,
+    format: '',
+    diagnostic: null
+  };
+
   public getInfo(): Record<string, unknown> {
     return {
       id: extensionConfig.id,
       name: Scratch.translate(definitions.extensionName),
       docsURI: extensionConfig.docsURI,
       blockIconURI: extensionConfig.blockIconURI,
-      blocks: blockDefinitions.map((block) => this.toScratchBlock(block))
+      blocks: blockDefinitions.map((block) => this.toScratchBlock(block)),
+      menus: Object.fromEntries(
+        Object.entries(menuDefinitions).map(([id, menu]) => [
+          id,
+          {
+            acceptReporters: menu.acceptReporters,
+            items: menu.items.map((item) => Scratch.translate(item))
+          }
+        ])
+      )
     };
   }
 
@@ -88,7 +120,10 @@ export class YamlJsonExtension implements TurboWarpExtension {
 
   public validateSchema(args: {SCHEMA: unknown; FRAGMENT: unknown}): string {
     return formatValidationResult(
-      validateWithJsonSchema(Scratch.Cast.toString(args.SCHEMA), decodeOrString(args.FRAGMENT, true))
+      validateWithJsonSchema(
+        Scratch.Cast.toString(args.SCHEMA),
+        decodeOrString(args.FRAGMENT, true)
+      )
     );
   }
 
@@ -97,6 +132,43 @@ export class YamlJsonExtension implements TurboWarpExtension {
       Scratch.Cast.toString(args.SCHEMA),
       decodeOrString(args.FRAGMENT, true)
     ).valid;
+  }
+
+  public parseText(args: {TEXT: unknown; FORMAT: unknown}): string {
+    const result = parseData(
+      Scratch.Cast.toString(args.TEXT),
+      normalizeParseFormat(Scratch.Cast.toString(args.FORMAT))
+    );
+    this.lastParse = {
+      success: result.success,
+      format: result.format,
+      diagnostic: result.diagnostic
+    };
+    return result.success ? encode(result.fragment) : '';
+  }
+
+  public lastParseSucceeded(): boolean {
+    return this.lastParse.success;
+  }
+
+  public lastParseFormat(): string {
+    return this.lastParse.format;
+  }
+
+  public lastParseDiagnostic(): string {
+    const diagnostic = this.lastParse.diagnostic;
+    if (diagnostic === null) return '';
+    const location =
+      diagnostic.line > 0 ? ` at line ${diagnostic.line}, column ${diagnostic.column}` : '';
+    return `[${diagnostic.code}]${location}: ${diagnostic.message}`;
+  }
+
+  public lastParseLine(): number {
+    return this.lastParse.diagnostic?.line ?? 0;
+  }
+
+  public lastParseColumn(): number {
+    return this.lastParse.diagnostic?.column ?? 0;
   }
 
   private toScratchBlock(block: BlockDefinition): Record<string, unknown> {
@@ -109,12 +181,19 @@ export class YamlJsonExtension implements TurboWarpExtension {
           name,
           {
             type: Scratch.ArgumentType[argument.type],
-            defaultValue: argument.defaultValue
+            defaultValue: argument.defaultValue,
+            ...(argument.menu === undefined ? {} : {menu: argument.menu})
           }
         ])
       )
     };
   }
+}
+
+function normalizeParseFormat(value: string): ParseFormat {
+  const normalized = value.trim().toLowerCase();
+  if (normalized === 'json' || normalized === 'yaml') return normalized;
+  return 'auto';
 }
 
 function encode(fragment: DataFragment): string {
@@ -148,7 +227,8 @@ function isFragment(value: unknown): value is DataFragment {
   if (record.kind === 'sequence') {
     return Array.isArray(record.items) && record.items.every(isFragment);
   }
-  if (record.kind === 'concat') return Array.isArray(record.children) && record.children.every(isFragment);
+  if (record.kind === 'concat')
+    return Array.isArray(record.children) && record.children.every(isFragment);
   return false;
 }
 

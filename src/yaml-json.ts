@@ -1,15 +1,25 @@
 import Ajv, {type AnySchema, type ErrorObject} from 'ajv';
+import {
+  parse as parseJsonText,
+  printParseErrorCode,
+  type ParseError as JsonParseError
+} from 'jsonc-parser';
+import {
+  isAlias,
+  isMap,
+  isScalar,
+  isSeq,
+  LineCounter,
+  parseDocument,
+  type Node as YamlNode,
+  type Pair as YamlPair
+} from 'yaml';
 
 export type DataScalarValue = string | number | boolean | null;
-export type DataValue = DataScalarValue | readonly DataValue[] | {readonly [key: string]: DataValue};
+export type DataValue =
+  DataScalarValue | readonly DataValue[] | {readonly [key: string]: DataValue};
 
-export type DataFragment =
-  | DataScalar
-  | DataPair
-  | DataMap
-  | DataSequence
-  | DataConcat
-  | DataEmpty;
+export type DataFragment = DataScalar | DataPair | DataMap | DataSequence | DataConcat | DataEmpty;
 
 export interface DataScalar {
   readonly kind: 'scalar';
@@ -45,6 +55,37 @@ export interface SchemaValidationResult {
   readonly valid: boolean;
   readonly errors: readonly string[];
 }
+
+export type ParseFormat = 'auto' | 'json' | 'yaml';
+export type ResolvedParseFormat = Exclude<ParseFormat, 'auto'>;
+
+export interface ParseDiagnostic {
+  readonly code: string;
+  readonly message: string;
+  readonly line: number;
+  readonly column: number;
+}
+
+export type ParseResult =
+  | {
+      readonly success: true;
+      readonly format: ResolvedParseFormat;
+      readonly fragment: DataFragment;
+      readonly diagnostic: null;
+    }
+  | {
+      readonly success: false;
+      readonly format: ResolvedParseFormat;
+      readonly fragment: null;
+      readonly diagnostic: ParseDiagnostic;
+    };
+
+export const PARSE_LIMITS = {
+  maxInputBytes: 256 * 1024,
+  maxDepth: 64,
+  maxNodes: 50_000,
+  maxAliases: 0
+} as const;
 
 export const empty: DataEmpty = {kind: 'empty'};
 
@@ -121,7 +162,10 @@ export function validateWithJsonSchema(
   try {
     schema = JSON.parse(schemaJson);
   } catch (error) {
-    return {valid: false, errors: [`Invalid JSON Schema: ${formatErrorMessage(error)}`]};
+    return {
+      valid: false,
+      errors: [`Invalid JSON Schema: ${formatErrorMessage(error)}`]
+    };
   }
 
   try {
@@ -129,8 +173,19 @@ export function validateWithJsonSchema(
     if (validate(toValue(fragment))) return {valid: true, errors: []};
     return {valid: false, errors: formatAjvErrors(validate.errors ?? [])};
   } catch (error) {
-    return {valid: false, errors: [`Invalid JSON Schema: ${formatErrorMessage(error)}`]};
+    return {
+      valid: false,
+      errors: [`Invalid JSON Schema: ${formatErrorMessage(error)}`]
+    };
   }
+}
+
+export function parseData(source: string, format: ParseFormat = 'auto'): ParseResult {
+  const selectedFormat = resolveFormat(source, format);
+  const inputDiagnostic = validateInputSize(source);
+  if (inputDiagnostic !== null) return failure(selectedFormat, inputDiagnostic);
+
+  return selectedFormat === 'json' ? parseJson(source) : parseYaml(source);
 }
 
 export function formatValidationResult(result: SchemaValidationResult): string {
@@ -215,6 +270,249 @@ function formatAjvErrors(errors: readonly ErrorObject[]): readonly string[] {
 
 function formatErrorMessage(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
+}
+
+function parseJson(source: string): ParseResult {
+  const errors: JsonParseError[] = [];
+  const value = parseJsonText(source, errors, {
+    allowEmptyContent: false,
+    allowTrailingComma: false,
+    disallowComments: true
+  }) as unknown;
+  const syntaxError = errors[0];
+  if (syntaxError !== undefined) {
+    return failure('json', {
+      code: 'INVALID_JSON',
+      message: printParseErrorCode(syntaxError.error),
+      ...positionAt(source, syntaxError.offset)
+    });
+  }
+  try {
+    return {
+      success: true,
+      format: 'json',
+      fragment: fragmentFromUnknown(value, {nodes: 0}, 0),
+      diagnostic: null
+    };
+  } catch (error) {
+    if (error instanceof ParseLimitError) return failure('json', error.diagnostic);
+    return failure('json', {
+      code: 'INVALID_JSON_VALUE',
+      message: formatErrorMessage(error),
+      line: 0,
+      column: 0
+    });
+  }
+}
+
+function parseYaml(source: string): ParseResult {
+  const lineCounter = new LineCounter();
+  const document = parseDocument(source, {
+    lineCounter,
+    prettyErrors: false,
+    schema: 'core',
+    uniqueKeys: true
+  });
+  const error = document.errors[0];
+  if (error !== undefined) {
+    const offset = error.pos[0];
+    return failure('yaml', {
+      code: error.code,
+      message: error.message,
+      ...yamlPosition(lineCounter, offset)
+    });
+  }
+  const warning = document.warnings[0];
+  if (warning !== undefined) {
+    return failure('yaml', {
+      code: warning.code,
+      message: warning.message,
+      ...yamlPosition(lineCounter, warning.pos[0])
+    });
+  }
+
+  try {
+    return {
+      success: true,
+      format: 'yaml',
+      fragment: fragmentFromYamlNode(document.contents, {nodes: 0}, 0, lineCounter),
+      diagnostic: null
+    };
+  } catch (caught) {
+    if (caught instanceof ParseLimitError) return failure('yaml', caught.diagnostic);
+    return failure('yaml', {
+      code: 'INVALID_YAML_VALUE',
+      message: formatErrorMessage(caught),
+      line: 0,
+      column: 0
+    });
+  }
+}
+
+interface ParseBudget {
+  nodes: number;
+}
+
+function fragmentFromUnknown(value: unknown, budget: ParseBudget, depth: number): DataFragment {
+  consumeBudget(budget, depth);
+  if (value === null || typeof value === 'string' || typeof value === 'boolean') {
+    return {kind: 'scalar', value};
+  }
+  if (typeof value === 'number' && Number.isFinite(value)) return {kind: 'scalar', value};
+  if (Array.isArray(value)) {
+    return {
+      kind: 'sequence',
+      items: value.map((item) => fragmentFromUnknown(item, budget, depth + 1))
+    };
+  }
+  if (typeof value === 'object') {
+    return {
+      kind: 'map',
+      entries: Object.entries(value).map(([key, item]) => ({
+        kind: 'pair',
+        key,
+        value: fragmentFromUnknown(item, budget, depth + 1)
+      }))
+    };
+  }
+  throw new TypeError('Parsed data contains an unsupported value.');
+}
+
+function fragmentFromYamlNode(
+  node: YamlNode<unknown> | null | unknown,
+  budget: ParseBudget,
+  depth: number,
+  lineCounter: LineCounter
+): DataFragment {
+  consumeBudget(budget, depth, nodePosition(node, lineCounter));
+  if (node === null) return nullValue();
+  if (isAlias(node)) {
+    throw new ParseLimitError({
+      code: 'YAML_ALIAS_NOT_ALLOWED',
+      message: `YAML aliases are disabled (maximum ${PARSE_LIMITS.maxAliases}).`,
+      ...nodePosition(node, lineCounter)
+    });
+  }
+  if (isScalar(node)) {
+    const value = node.value;
+    if (
+      value === null ||
+      typeof value === 'string' ||
+      typeof value === 'boolean' ||
+      (typeof value === 'number' && Number.isFinite(value))
+    ) {
+      return {kind: 'scalar', value};
+    }
+    throw new TypeError('Parsed YAML contains an unsupported scalar value.');
+  }
+  if (isSeq(node)) {
+    return {
+      kind: 'sequence',
+      items: node.items.map((item) => fragmentFromYamlNode(item, budget, depth + 1, lineCounter))
+    };
+  }
+  if (isMap(node)) {
+    return {
+      kind: 'map',
+      entries: node.items.map((item) => yamlPairToFragment(item, budget, depth, lineCounter))
+    };
+  }
+  throw new TypeError('Parsed YAML contains an unsupported node type.');
+}
+
+function yamlPairToFragment(
+  item: YamlPair,
+  budget: ParseBudget,
+  depth: number,
+  lineCounter: LineCounter
+): DataPair {
+  if (!isScalar(item.key) || typeof item.key.value !== 'string') {
+    throw new ParseLimitError({
+      code: 'YAML_NON_STRING_KEY',
+      message: 'YAML map keys must be strings.',
+      ...nodePosition(item.key, lineCounter)
+    });
+  }
+  return {
+    kind: 'pair',
+    key: item.key.value,
+    value: fragmentFromYamlNode(item.value, budget, depth + 1, lineCounter)
+  };
+}
+
+function consumeBudget(
+  budget: ParseBudget,
+  depth: number,
+  position: {line: number; column: number} = {line: 0, column: 0}
+): void {
+  if (depth > PARSE_LIMITS.maxDepth) {
+    throw new ParseLimitError({
+      code: 'MAX_DEPTH_EXCEEDED',
+      message: `Parsed data exceeds the maximum nesting depth of ${PARSE_LIMITS.maxDepth}.`,
+      ...position
+    });
+  }
+  budget.nodes += 1;
+  if (budget.nodes > PARSE_LIMITS.maxNodes) {
+    throw new ParseLimitError({
+      code: 'MAX_NODES_EXCEEDED',
+      message: `Parsed data exceeds the maximum node count of ${PARSE_LIMITS.maxNodes}.`,
+      ...position
+    });
+  }
+}
+
+function validateInputSize(source: string): ParseDiagnostic | null {
+  const bytes = new TextEncoder().encode(source).byteLength;
+  if (bytes <= PARSE_LIMITS.maxInputBytes) return null;
+  return {
+    code: 'MAX_INPUT_BYTES_EXCEEDED',
+    message: `Input is ${bytes} bytes; the maximum is ${PARSE_LIMITS.maxInputBytes} bytes.`,
+    line: 0,
+    column: 0
+  };
+}
+
+function resolveFormat(source: string, format: ParseFormat): ResolvedParseFormat {
+  if (format === 'json' || format === 'yaml') return format;
+  const errors: JsonParseError[] = [];
+  parseJsonText(source, errors, {
+    allowEmptyContent: false,
+    allowTrailingComma: false,
+    disallowComments: true
+  });
+  return errors.length === 0 ? 'json' : 'yaml';
+}
+
+function failure(format: ResolvedParseFormat, diagnostic: ParseDiagnostic): ParseResult {
+  return {success: false, format, fragment: null, diagnostic};
+}
+
+function positionAt(source: string, offset: number): {line: number; column: number} {
+  const before = source.slice(0, Math.max(0, offset));
+  const lines = before.split('\n');
+  return {line: lines.length, column: (lines.at(-1)?.length ?? 0) + 1};
+}
+
+function nodePosition(node: unknown, lineCounter: LineCounter): {line: number; column: number} {
+  if (typeof node !== 'object' || node === null || !('range' in node)) {
+    return {line: 0, column: 0};
+  }
+  const range = (node as {range: unknown}).range;
+  const offset = Array.isArray(range) && typeof range[0] === 'number' ? range[0] : undefined;
+  return offset === undefined ? {line: 0, column: 0} : yamlPosition(lineCounter, offset);
+}
+
+function yamlPosition(lineCounter: LineCounter, offset: number): {line: number; column: number} {
+  const {line, col} = lineCounter.linePos(offset);
+  return {line, column: col};
+}
+
+class ParseLimitError extends Error {
+  public constructor(public readonly diagnostic: ParseDiagnostic) {
+    super(diagnostic.message);
+    this.name = 'ParseLimitError';
+  }
 }
 
 function isPlainObject(value: DataValue): value is {readonly [key: string]: DataValue} {

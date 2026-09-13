@@ -2,12 +2,13 @@
 
 [日本語](README.ja.md)
 
-A TurboWarp extension for building structured data with immutable reporter blocks, then rendering it as YAML or JSON at the output boundary.
+A TurboWarp extension for safely parsing YAML/JSON text or building structured data with immutable reporter blocks, then rendering it at the output boundary.
 
 ## What it does
 
 - creates string, number, boolean, and null scalar values;
 - creates map pairs, maps, sequences, and composed fragments;
+- safely parses caller-provided YAML or JSON text into the same fragment representation;
 - renders the same built data as deterministic YAML or formatted JSON;
 - validates built data with JSON Schema before it is served or exported;
 - exports a block-free TypeScript composition API from `src/yaml-json.ts`.
@@ -18,7 +19,7 @@ A TurboWarp extension for building structured data with immutable reporter block
 - pnpm through Corepack;
 - TurboWarp's unsandboxed extension option is not required.
 
-Strings are quoted when rendered, and raw YAML/JSON injection blocks are intentionally not included. JSON Schema input is parsed as JSON and validation failures are returned as reporter text or boolean reporter values.
+Strings are quoted when rendered. Parsing is limited to the string passed directly to the block; it never reads files or accesses the network. YAML aliases and unknown tags are rejected, and parsing enforces a 256 KiB input limit, a nesting-depth limit of 64, and a node-count limit of 50,000. JSON Schema input is parsed as JSON and validation failures are returned as reporter text or boolean reporter values.
 
 ## Installation
 
@@ -62,6 +63,8 @@ const validation = validateWithJsonSchema(
   document
 );
 ```
+
+To parse external text, use `parse [TEXT] as [FORMAT]` with `auto`, `YAML`, or `JSON`. A successful reporter value can be passed directly to `render JSON`, `render YAML`, and the JSON Schema blocks. On failure it returns an empty string; inspect `last parse succeeded?`, `last parse diagnostic`, `last parse error line`, and `last parse error column`. Line and column values are one-based, or zero when unavailable.
 
 For `turbowarp-http-server`, pass the rendered string as the response body and select `Content-Type: application/yaml; charset=utf-8` or `Content-Type: application/json; charset=utf-8`. The HTTP server does not need a package dependency on this extension.
 
@@ -191,6 +194,62 @@ Reports whether the built data passes JSON Schema validation.
 | Opcode | `isValidSchema` |
 | `SCHEMA` | String, default: `{"type":"object","required":["temperature"]}` |
 | `FRAGMENT` | String, default: `` |
+
+### `parse [TEXT] as [FORMAT]`
+
+Safely parses the provided YAML or JSON text into a fragment.
+
+| Property | Value |
+|---|---|
+| Type | Reporter |
+| Opcode | `parseText` |
+| `TEXT` | String, default: `name: sensor` |
+| `FORMAT` | String, default: `auto` |
+
+### `last parse succeeded?`
+
+Reports whether the most recent parse operation succeeded.
+
+| Property | Value |
+|---|---|
+| Type | Boolean |
+| Opcode | `lastParseSucceeded` |
+
+### `last parse format`
+
+Reports the format selected by the most recent parse operation.
+
+| Property | Value |
+|---|---|
+| Type | Reporter |
+| Opcode | `lastParseFormat` |
+
+### `last parse diagnostic`
+
+Reports the code, location, and message for the most recent parse failure.
+
+| Property | Value |
+|---|---|
+| Type | Reporter |
+| Opcode | `lastParseDiagnostic` |
+
+### `last parse error line`
+
+Reports the one-based line of the most recent parse failure, or zero when unavailable.
+
+| Property | Value |
+|---|---|
+| Type | Reporter |
+| Opcode | `lastParseLine` |
+
+### `last parse error column`
+
+Reports the one-based column of the most recent parse failure, or zero when unavailable.
+
+| Property | Value |
+|---|---|
+| Type | Reporter |
+| Opcode | `lastParseColumn` |
 
 <!-- END GENERATED BLOCKS -->
 

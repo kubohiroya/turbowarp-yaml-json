@@ -1,5 +1,11 @@
 {
   "extensionName": "TurboWarp YAML/JSON",
+  "menus": {
+    "parseFormat": {
+      "acceptReporters": false,
+      "items": ["auto", "YAML", "JSON"]
+    }
+  },
   "blocks": [
     {
       "opcode": "string",
@@ -102,6 +108,55 @@
         },
         "FRAGMENT": {"type": "STRING", "defaultValue": ""}
       }
+    },
+    {
+      "opcode": "parseText",
+      "blockType": "REPORTER",
+      "text": "parse [TEXT] as [FORMAT]",
+      "description": "Safely parses the provided YAML or JSON text into a fragment.",
+      "arguments": {
+        "TEXT": {"type": "STRING", "defaultValue": "name: sensor"},
+        "FORMAT": {
+          "type": "STRING",
+          "defaultValue": "auto",
+          "menu": "parseFormat"
+        }
+      }
+    },
+    {
+      "opcode": "lastParseSucceeded",
+      "blockType": "BOOLEAN",
+      "text": "last parse succeeded?",
+      "description": "Reports whether the most recent parse operation succeeded.",
+      "arguments": {}
+    },
+    {
+      "opcode": "lastParseFormat",
+      "blockType": "REPORTER",
+      "text": "last parse format",
+      "description": "Reports the format selected by the most recent parse operation.",
+      "arguments": {}
+    },
+    {
+      "opcode": "lastParseDiagnostic",
+      "blockType": "REPORTER",
+      "text": "last parse diagnostic",
+      "description": "Reports the code, location, and message for the most recent parse failure.",
+      "arguments": {}
+    },
+    {
+      "opcode": "lastParseLine",
+      "blockType": "REPORTER",
+      "text": "last parse error line",
+      "description": "Reports the one-based line of the most recent parse failure, or zero when unavailable.",
+      "arguments": {}
+    },
+    {
+      "opcode": "lastParseColumn",
+      "blockType": "REPORTER",
+      "text": "last parse error column",
+      "description": "Reports the one-based column of the most recent parse failure, or zero when unavailable.",
+      "arguments": {}
     }
   ]
 }

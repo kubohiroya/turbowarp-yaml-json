@@ -37,6 +37,7 @@ describe('YamlJsonExtension', () => {
     expect(info.blocks.map((block) => block.opcode)).toContain('renderYaml');
     expect(info.blocks.map((block) => block.opcode)).toContain('renderJson');
     expect(info.blocks.map((block) => block.opcode)).toContain('validateSchema');
+    expect(info.blocks.map((block) => block.opcode)).toContain('parseText');
   });
 
   it('builds and renders YAML/JSON through reporter values', () => {
@@ -49,12 +50,17 @@ describe('YamlJsonExtension', () => {
     });
     const document = extension.map({
       ENTRIES: extension.concat({
-        LEFT: extension.pair({KEY: 'name', VALUE: extension.string({VALUE: 'sensor'})}),
+        LEFT: extension.pair({
+          KEY: 'name',
+          VALUE: extension.string({VALUE: 'sensor'})
+        }),
         RIGHT: extension.pair({KEY: 'readings', VALUE: readings})
       })
     });
 
-    expect(extension.renderYaml({FRAGMENT: document})).toBe('name: "sensor"\nreadings:\n  - 21\n  - 22');
+    expect(extension.renderYaml({FRAGMENT: document})).toBe(
+      'name: "sensor"\nreadings:\n  - 21\n  - 22'
+    );
     expect(extension.renderJson({FRAGMENT: document})).toContain('"readings"');
   });
 
@@ -66,7 +72,10 @@ describe('YamlJsonExtension', () => {
       properties: {temperature: {type: 'number'}}
     });
     const document = extension.map({
-      ENTRIES: extension.pair({KEY: 'temperature', VALUE: extension.number({VALUE: 21})})
+      ENTRIES: extension.pair({
+        KEY: 'temperature',
+        VALUE: extension.number({VALUE: 21})
+      })
     });
 
     expect(extension.isValidSchema({SCHEMA: schema, FRAGMENT: document})).toBe(true);
@@ -77,6 +86,33 @@ describe('YamlJsonExtension', () => {
     const extension = new YamlJsonExtension();
     expect(extension.renderYaml({FRAGMENT: extension.map({ENTRIES: ''})})).toBe('{}');
     expect(extension.renderYaml({FRAGMENT: extension.sequence({ITEMS: ''})})).toBe('[]');
-    expect(extension.renderYaml({FRAGMENT: extension.concat({LEFT: '', RIGHT: ''})})).toBe('null');
+    expect(
+      extension.renderYaml({
+        FRAGMENT: extension.concat({LEFT: '', RIGHT: ''})
+      })
+    ).toBe('null');
+  });
+
+  it('parses external text and exposes the most recent result state', () => {
+    const extension = new YamlJsonExtension();
+    const fragment = extension.parseText({
+      TEXT: 'name: sensor',
+      FORMAT: 'YAML'
+    });
+
+    expect(extension.lastParseSucceeded()).toBe(true);
+    expect(extension.lastParseFormat()).toBe('yaml');
+    expect(extension.lastParseDiagnostic()).toBe('');
+    expect(extension.renderJson({FRAGMENT: fragment})).toContain('"name": "sensor"');
+  });
+
+  it('returns an empty reporter value and diagnostics after a failed parse', () => {
+    const extension = new YamlJsonExtension();
+    expect(extension.parseText({TEXT: '{', FORMAT: 'JSON'})).toBe('');
+    expect(extension.lastParseSucceeded()).toBe(false);
+    expect(extension.lastParseFormat()).toBe('json');
+    expect(extension.lastParseDiagnostic()).toContain('[INVALID_JSON]');
+    expect(extension.lastParseLine()).toBeGreaterThan(0);
+    expect(extension.lastParseColumn()).toBeGreaterThan(0);
   });
 });
