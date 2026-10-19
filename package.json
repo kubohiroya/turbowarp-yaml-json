@@ -1,6 +1,6 @@
 {
   "name": "@kubohiroya/turbowarp-yaml-json",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A safe YAML/JSON parser and immutable data builder extension for TurboWarp.",
   "author": "Hiroya Kubo <hiroya@cuc.ac.jp>",
   "license": "MPL-2.0",
@@ -30,7 +30,8 @@
     "src/",
     "README.md",
     "README.ja.md",
-    "LICENSE"
+    "LICENSE",
+    "schemas/"
   ],
   "exports": {
     ".": "./src/yaml-json.ts",
@@ -68,8 +69,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
-    "@kubohiroya/turbowarp-extension-manifest": "0.2.0",
-    "@kubohiroya/vite-plugin-turbowarp-extension": "0.4.0",
+    "@kubohiroya/turbowarp-extension-manifest": "0.3.2",
+    "@kubohiroya/vite-plugin-turbowarp-extension": "0.6.1",
     "@types/node": "^24.13.3",
     "eslint": "^9.39.5",
     "gh-pages": "^6.3.0",
@@ -77,6 +78,13 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.66.0",
     "vite": "^8.2.2",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.10",
+    "@kubohiroya/turbowarp-extension-data-editor": "0.2.1"
+  },
+  "gitHead": "7394f30af9829babb0b058ca578c3900befeedaf",
+  "x-turbowarp-source": {
+    "revision": "7394f30af9829babb0b058ca578c3900befeedaf",
+    "revisionRole": "base-commit",
+    "sourceState": "local-release-overlay"
   }
 }

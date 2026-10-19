@@ -31,7 +31,7 @@ pnpm install --frozen-lockfile
 The package is version-pinned when used from npm:
 
 ```bash
-pnpm add --save-exact @kubohiroya/turbowarp-yaml-json@0.3.0
+pnpm add --save-exact @kubohiroya/turbowarp-yaml-json@0.3.1
 ```
 
 ## Quick Start
@@ -281,3 +281,5 @@ Release artifacts include `dist/turbowarp-yaml-json.js`, `dist/extension-manifes
 ## License
 
 SPDX-License-Identifier: MPL-2.0
+
+固定入力の編集範囲・互換性・切戻しについては [固定入力の編集](docs/fixed-input-editors.ja.md) を参照してください。

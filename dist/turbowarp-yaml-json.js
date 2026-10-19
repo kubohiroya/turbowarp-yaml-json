@@ -60,212 +60,6 @@
   	docsURI: "https://kubohiroya.github.io/turbowarp-yaml-json/",
   	blockIconURI: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHJlY3QgeD0iNiIgeT0iOCIgd2lkdGg9IjM2IiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzJGNjM4NiIvPjxwYXRoIGQ9Ik0xMyAzMFYxOGw1IDcgNS03djEyTTMwIDE4djEyTTI2IDMwaDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4="
   };
-  var block_definitions_default = {
-  	extensionName: "TurboWarp YAML/JSON",
-  	menus: { "parseFormat": {
-  		"acceptReporters": false,
-  		"items": [
-  			"auto",
-  			"YAML",
-  			"JSON"
-  		]
-  	} },
-  	blocks: [
-  		{
-  			"opcode": "string",
-  			"blockType": "REPORTER",
-  			"text": "string [VALUE]",
-  			"description": "Creates a string value.",
-  			"arguments": { "VALUE": {
-  				"type": "STRING",
-  				"defaultValue": "sensor"
-  			} }
-  		},
-  		{
-  			"opcode": "number",
-  			"blockType": "REPORTER",
-  			"text": "number [VALUE]",
-  			"description": "Creates a finite number value.",
-  			"arguments": { "VALUE": {
-  				"type": "NUMBER",
-  				"defaultValue": 21
-  			} }
-  		},
-  		{
-  			"opcode": "boolean",
-  			"blockType": "REPORTER",
-  			"text": "boolean [VALUE]",
-  			"description": "Creates a boolean value.",
-  			"arguments": { "VALUE": {
-  				"type": "BOOLEAN",
-  				"defaultValue": true
-  			} }
-  		},
-  		{
-  			"opcode": "nullValue",
-  			"blockType": "REPORTER",
-  			"text": "null",
-  			"description": "Creates a null value.",
-  			"arguments": {}
-  		},
-  		{
-  			"opcode": "pair",
-  			"blockType": "REPORTER",
-  			"text": "pair key [KEY] value [VALUE]",
-  			"description": "Creates a map key/value pair.",
-  			"arguments": {
-  				"KEY": {
-  					"type": "STRING",
-  					"defaultValue": "temperature"
-  				},
-  				"VALUE": {
-  					"type": "STRING",
-  					"defaultValue": "21"
-  				}
-  			}
-  		},
-  		{
-  			"opcode": "map",
-  			"blockType": "REPORTER",
-  			"text": "map [ENTRIES]",
-  			"description": "Creates an object/map from pair fragments.",
-  			"arguments": { "ENTRIES": {
-  				"type": "STRING",
-  				"defaultValue": ""
-  			} }
-  		},
-  		{
-  			"opcode": "sequence",
-  			"blockType": "REPORTER",
-  			"text": "sequence [ITEMS]",
-  			"description": "Creates an array/sequence from item fragments.",
-  			"arguments": { "ITEMS": {
-  				"type": "STRING",
-  				"defaultValue": ""
-  			} }
-  		},
-  		{
-  			"opcode": "concat",
-  			"blockType": "REPORTER",
-  			"text": "[LEFT] followed by [RIGHT]",
-  			"description": "Combines fragments without mutating either input.",
-  			"arguments": {
-  				"LEFT": {
-  					"type": "STRING",
-  					"defaultValue": ""
-  				},
-  				"RIGHT": {
-  					"type": "STRING",
-  					"defaultValue": ""
-  				}
-  			}
-  		},
-  		{
-  			"opcode": "renderYaml",
-  			"blockType": "REPORTER",
-  			"text": "render YAML [FRAGMENT]",
-  			"description": "Renders a fragment to YAML text.",
-  			"arguments": { "FRAGMENT": {
-  				"type": "STRING",
-  				"defaultValue": ""
-  			} }
-  		},
-  		{
-  			"opcode": "renderJson",
-  			"blockType": "REPORTER",
-  			"text": "render JSON [FRAGMENT]",
-  			"description": "Renders a fragment to formatted JSON text.",
-  			"arguments": { "FRAGMENT": {
-  				"type": "STRING",
-  				"defaultValue": ""
-  			} }
-  		},
-  		{
-  			"opcode": "validateSchema",
-  			"blockType": "REPORTER",
-  			"text": "validate JSON Schema [SCHEMA] data [FRAGMENT]",
-  			"description": "Returns JSON Schema validation details for the built data.",
-  			"arguments": {
-  				"SCHEMA": {
-  					"type": "STRING",
-  					"defaultValue": "{\"type\":\"object\",\"required\":[\"temperature\"]}"
-  				},
-  				"FRAGMENT": {
-  					"type": "STRING",
-  					"defaultValue": ""
-  				}
-  			}
-  		},
-  		{
-  			"opcode": "isValidSchema",
-  			"blockType": "BOOLEAN",
-  			"text": "JSON Schema [SCHEMA] accepts data [FRAGMENT]?",
-  			"description": "Reports whether the built data passes JSON Schema validation.",
-  			"arguments": {
-  				"SCHEMA": {
-  					"type": "STRING",
-  					"defaultValue": "{\"type\":\"object\",\"required\":[\"temperature\"]}"
-  				},
-  				"FRAGMENT": {
-  					"type": "STRING",
-  					"defaultValue": ""
-  				}
-  			}
-  		},
-  		{
-  			"opcode": "parseText",
-  			"blockType": "REPORTER",
-  			"text": "parse [TEXT] as [FORMAT]",
-  			"description": "Safely parses the provided YAML or JSON text into a fragment.",
-  			"arguments": {
-  				"TEXT": {
-  					"type": "STRING",
-  					"defaultValue": "name: sensor"
-  				},
-  				"FORMAT": {
-  					"type": "STRING",
-  					"defaultValue": "auto",
-  					"menu": "parseFormat"
-  				}
-  			}
-  		},
-  		{
-  			"opcode": "lastParseSucceeded",
-  			"blockType": "BOOLEAN",
-  			"text": "last parse succeeded?",
-  			"description": "Reports whether the most recent parse operation succeeded.",
-  			"arguments": {}
-  		},
-  		{
-  			"opcode": "lastParseFormat",
-  			"blockType": "REPORTER",
-  			"text": "last parse format",
-  			"description": "Reports the format selected by the most recent parse operation.",
-  			"arguments": {}
-  		},
-  		{
-  			"opcode": "lastParseDiagnostic",
-  			"blockType": "REPORTER",
-  			"text": "last parse diagnostic",
-  			"description": "Reports the code, location, and message for the most recent parse failure.",
-  			"arguments": {}
-  		},
-  		{
-  			"opcode": "lastParseLine",
-  			"blockType": "REPORTER",
-  			"text": "last parse error line",
-  			"description": "Reports the one-based line of the most recent parse failure, or zero when unavailable.",
-  			"arguments": {}
-  		},
-  		{
-  			"opcode": "lastParseColumn",
-  			"blockType": "REPORTER",
-  			"text": "last parse error column",
-  			"description": "Reports the one-based column of the most recent parse failure, or zero when unavailable.",
-  			"arguments": {}
-  		}
-  	]
-  };
   //#endregion
   //#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/code.js
   var require_code$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
@@ -2972,16 +2766,16 @@
   //#endregion
   //#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/data.json
   var data_exports = /* @__PURE__ */ __exportAll({
-  	$id: () => $id$1,
+  	$id: () => $id$2,
   	additionalProperties: () => false,
   	default: () => data_default,
   	description: () => description,
   	properties: () => properties$1,
   	required: () => required,
   	type: () => type$1
-  }), $id$1, description, type$1, required, properties$1, data_default;
+  }), $id$2, description, type$1, required, properties$1, data_default;
   var init_data = __esmMin((() => {
-  	$id$1 = "https://raw.githubusercontent.com/ajv-validator/ajv/master/lib/refs/data.json#";
+  	$id$2 = "https://raw.githubusercontent.com/ajv-validator/ajv/master/lib/refs/data.json#";
   	description = "Meta-schema for $data reference (JSON AnySchema extension proposal)";
   	type$1 = "object";
   	required = ["$data"];
@@ -2990,7 +2784,7 @@
   		"anyOf": [{ "format": "relative-json-pointer" }, { "format": "json-pointer" }]
   	} };
   	data_default = {
-  		$id: $id$1,
+  		$id: $id$2,
   		description,
   		type: type$1,
   		required,
@@ -6314,18 +6108,18 @@
   //#endregion
   //#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-draft-07.json
   var json_schema_draft_07_exports = /* @__PURE__ */ __exportAll({
-  	$id: () => $id,
-  	$schema: () => $schema,
+  	$id: () => $id$1,
+  	$schema: () => $schema$1,
   	default: () => json_schema_draft_07_default,
   	definitions: () => definitions,
   	properties: () => properties,
   	title: () => title,
   	type: () => type
   });
-  var $schema, $id, title, definitions, type, properties, json_schema_draft_07_default;
+  var $schema$1, $id$1, title, definitions, type, properties, json_schema_draft_07_default;
   var init_json_schema_draft_07 = __esmMin((() => {
-  	$schema = "http://json-schema.org/draft-07/schema#";
-  	$id = "http://json-schema.org/draft-07/schema#";
+  	$schema$1 = "http://json-schema.org/draft-07/schema#";
+  	$id$1 = "http://json-schema.org/draft-07/schema#";
   	title = "Core schema meta-schema";
   	definitions = {
   		"schemaArray": {
@@ -6456,8 +6250,8 @@
   		"not": { "$ref": "#" }
   	};
   	json_schema_draft_07_default = {
-  		$schema,
-  		$id,
+  		$schema: $schema$1,
+  		$id: $id$1,
   		title,
   		definitions,
   		type,
@@ -6466,8 +6260,8 @@
   	};
   }));
   //#endregion
-  //#region node_modules/.pnpm/jsonc-parser@3.3.1/node_modules/jsonc-parser/lib/esm/impl/scanner.js
-  var import_ajv = /* @__PURE__ */ __toESM((/* @__PURE__ */ __commonJSMin(((exports, module) => {
+  //#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/ajv.js
+  var require_ajv = /* @__PURE__ */ __commonJSMin(((exports, module) => {
   	Object.defineProperty(exports, "__esModule", { value: true });
   	exports.MissingRefError = exports.ValidationError = exports.CodeGen = exports.Name = exports.nil = exports.stringify = exports.str = exports._ = exports.KeywordCxt = exports.Ajv = void 0;
   	var core_1 = require_core$1();
@@ -6556,7 +6350,449 @@
   			return ref_error_1.default;
   		}
   	});
-  })))(), 1);
+  }));
+  //#endregion
+  //#region node_modules/.pnpm/@kubohiroya+turbowarp-extension-data-editor@0.2.1_react@18.3.1/node_modules/@kubohiroya/turbowarp-extension-data-editor/dist/fixed-input-schema.js
+  var numberToken = /^-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$/u;
+  var invalidNumber = Object.freeze({
+  	kind: "invalid",
+  	code: "fixed-number-input-invalid"
+  });
+  /**
+  * Parse a NEW numeric draft according to NP-finite-new-input-v1.
+  * Never apply this to opening/no-op raw values or use it as an owner validator.
+  * Keep the validated token so negative zero, precision and exponent spelling survive.
+  */
+  function parseFixedNumberInput(input) {
+  	if (typeof input === "number") {
+  		if (!Number.isFinite(input)) return invalidNumber;
+  		return Object.freeze({
+  			kind: "valid",
+  			token: Object.is(input, -0) ? "-0" : String(input),
+  			value: input
+  		});
+  	}
+  	if (typeof input !== "string") return invalidNumber;
+  	const token = input.trim();
+  	if (!numberToken.test(token)) return invalidNumber;
+  	const value = Number(token);
+  	return Number.isFinite(value) ? Object.freeze({
+  		kind: "valid",
+  		token,
+  		value
+  	}) : invalidNumber;
+  }
+  var block_editor_fixed_inputs_schema_default = {
+  	$schema: "https://json-schema.org/draft/2020-12/schema",
+  	$id: "https://kubohiroya.github.io/turbowarp-yaml-json/schemas/block-editor-fixed-inputs.schema.json",
+  	$defs: {
+  		"number": {
+  			"type": "object",
+  			"properties": { "VALUE": { "type": "number" } },
+  			"required": ["VALUE"],
+  			"additionalProperties": true
+  		},
+  		"parseText": {
+  			"type": "object",
+  			"properties": { "FORMAT": {
+  				"type": "string",
+  				"enum": [
+  					"auto",
+  					"YAML",
+  					"JSON"
+  				]
+  			} },
+  			"required": ["FORMAT"],
+  			"additionalProperties": true
+  		}
+  	}
+  };
+  //#endregion
+  //#region src/fixed-input-schema.ts
+  var repository$1 = "turbowarp-yaml-json";
+  /** The owner JSON document is canonical; this selects a primitive field fragment. */
+  function fixedInputBundle(opcode, argument) {
+  	const source = {
+  		repository: repository$1,
+  		path: "schemas/block-editor-fixed-inputs.schema.json",
+  		symbol: `#/$defs/${opcode}/properties/${argument}`
+  	};
+  	const blocks = block_editor_fixed_inputs_schema_default.$defs;
+  	return {
+  		identity: {
+  			ownerId: repository$1,
+  			contractId: opcode,
+  			revision: "fixed-inputs-v1",
+  			variantId: argument
+  		},
+  		dialect: "2020-12",
+  		root: {
+  			retrievalUri: block_editor_fixed_inputs_schema_default.$id,
+  			document: blocks[opcode].properties[argument],
+  			artifact: {
+  				role: "canonical-schema",
+  				source
+  			}
+  		},
+  		resources: [],
+  		provenance: {
+  			canonicalSources: [source, {
+  				repository: repository$1,
+  				path: "src/extension.ts",
+  				symbol: opcode
+  			}],
+  			generatedFiles: [],
+  			referenceSchemas: [],
+  			generationSources: []
+  		}
+  	};
+  }
+  //#endregion
+  //#region src/fixed-input-editors.ts
+  var extensionId = "kubohiroyayamljson";
+  var repository = "turbowarp-yaml-json";
+  var fields = [{
+  	"opcode": "number",
+  	"argument": "VALUE",
+  	"control": "number",
+  	"choices": [],
+  	"normalization": "identity",
+  	"shape": "math_number.NUM",
+  	"maxBytes": false
+  }, {
+  	"opcode": "parseText",
+  	"argument": "FORMAT",
+  	"control": "enum",
+  	"choices": [
+  		"auto",
+  		"YAML",
+  		"JSON"
+  	],
+  	"normalization": "parse-format",
+  	"shape": "direct-field-dropdown",
+  	"maxBytes": false
+  }];
+  function literalString(value) {
+  	if (typeof value !== "string") throw new TypeError("Expected a string literal.");
+  	return value;
+  }
+  /** Legacy nonempty finite aliases are projections; opening never creates a write. */
+  function existingFixedNumber(value) {
+  	if (typeof value !== "string" && typeof value !== "number" || typeof value === "string" && value.trim() === "") throw new TypeError("Unavailable numeric projection.");
+  	const number = Number(value);
+  	if (!Number.isFinite(number)) throw new TypeError("Unavailable numeric projection.");
+  	return number;
+  }
+  function normalizeChoice(field, raw) {
+  	if (field.normalization === "lowercase") return raw.toLowerCase();
+  	if (field.normalization === "method") return raw.trim().toUpperCase();
+  	if (field.normalization === "trim") return raw.trim();
+  	if (field.normalization === "parse-format") {
+  		const lower = raw.trim().toLowerCase();
+  		return lower === "json" ? "JSON" : lower === "yaml" ? "YAML" : lower === "auto" ? "auto" : raw;
+  	}
+  	return raw;
+  }
+  function binding(field) {
+  	return {
+  		argument: field.argument,
+  		schemaBundle: fixedInputBundle(field.opcode, field.argument),
+  		control: {
+  			kind: field.control,
+  			...field.control === "enum" ? { choices: field.choices.map((value) => ({ value })) } : {}
+  		},
+  		read(value) {
+  			return field.control === "number" ? existingFixedNumber(value) : normalizeChoice(field, literalString(value));
+  		},
+  		encode(value) {
+  			if (field.control === "number") {
+  				const parsed = parseFixedNumberInput(value);
+  				if (parsed.kind !== "valid") throw new TypeError("Invalid new numeric input.");
+  				return parsed.token;
+  			}
+  			const raw = literalString(value), normalized = normalizeChoice(field, raw);
+  			if (!field.choices.includes(normalized)) throw new TypeError("Unsupported fixed choice.");
+  			return field.shape === "menu-shadow" || field.shape === "direct-field-dropdown" ? normalized : raw;
+  		},
+  		validateCandidate(value) {
+  			try {
+  				if (field.control === "number") {
+  					const number = existingFixedNumber(value);
+  					if (field.maxBytes && (!Number.isSafeInteger(Math.trunc(number)) || Math.trunc(number) < 1)) return [{ message: "Invalid named body size." }];
+  					return [];
+  				}
+  				return field.choices.includes(normalizeChoice(field, literalString(value))) ? [] : [{ message: "Unsupported fixed choice." }];
+  			} catch {
+  				return [{ message: "Invalid fixed input." }];
+  			}
+  		}
+  	};
+  }
+  var fixedInputEditors = [...new Set(fields.map((f) => f.opcode))].map((opcode) => ({
+  	apiVersion: 1,
+  	extensionId,
+  	editorId: `${opcode}-fixed-inputs`,
+  	opcodes: [`${extensionId}_${opcode}`],
+  	contractId: `${repository}/${opcode}`,
+  	contractRevision: "fixed-inputs-v1",
+  	bindings: fields.filter((field) => field.opcode === opcode).map(binding),
+  	validationContext: () => ({
+  		consumerId: repository,
+  		nowMs: 0,
+  		settings: null
+  	})
+  }));
+  /** Registration follows the advertised opcode membership and the optional host capability. */
+  function fixedInputRegistration(scratch) {
+  	const host = scratch ?? {};
+  	let active;
+  	let membership = "";
+  	const removers = [];
+  	let stopped = false;
+  	const clear = () => {
+  		host.vm?.runtime?.off?.("RUNTIME_DISPOSED", shutdown);
+  		for (const remove of removers.splice(0).reverse()) remove();
+  		active = void 0;
+  		membership = "";
+  	};
+  	const shutdown = () => {
+  		stopped = true;
+  		clear();
+  	};
+  	return {
+  		ensure(visibleOpcodes) {
+  			const api = host.gui?.blockEditors;
+  			const definitions = fixedInputEditors.filter((definition) => definition.opcodes.every((opcode) => visibleOpcodes.includes(opcode)));
+  			const key = definitions.map((definition) => definition.editorId).join(",");
+  			if (stopped || api === active && membership === key) return;
+  			clear();
+  			if (api?.apiVersion !== 1 || typeof api.registerFixedInputEditor !== "function" || !definitions.length) return;
+  			try {
+  				for (const definition of definitions) {
+  					const remove = api.registerFixedInputEditor.call(api, definition);
+  					if (typeof remove !== "function") throw new TypeError("Invalid fixed input cleanup.");
+  					removers.push(remove);
+  				}
+  				active = api;
+  				membership = key;
+  				host.vm?.runtime?.on?.("RUNTIME_DISPOSED", shutdown);
+  			} catch (error) {
+  				clear();
+  				throw error;
+  			}
+  		},
+  		dispose: shutdown
+  	};
+  }
+  var block_definitions_default = {
+  	extensionName: "TurboWarp YAML/JSON",
+  	menus: { "parseFormat": {
+  		"acceptReporters": false,
+  		"items": [
+  			"auto",
+  			"YAML",
+  			"JSON"
+  		]
+  	} },
+  	blocks: [
+  		{
+  			"opcode": "string",
+  			"blockType": "REPORTER",
+  			"text": "string [VALUE]",
+  			"description": "Creates a string value.",
+  			"arguments": { "VALUE": {
+  				"type": "STRING",
+  				"defaultValue": "sensor"
+  			} }
+  		},
+  		{
+  			"opcode": "number",
+  			"blockType": "REPORTER",
+  			"text": "number [VALUE]",
+  			"description": "Creates a finite number value.",
+  			"arguments": { "VALUE": {
+  				"type": "NUMBER",
+  				"defaultValue": 21
+  			} }
+  		},
+  		{
+  			"opcode": "boolean",
+  			"blockType": "REPORTER",
+  			"text": "boolean [VALUE]",
+  			"description": "Creates a boolean value.",
+  			"arguments": { "VALUE": {
+  				"type": "BOOLEAN",
+  				"defaultValue": true
+  			} }
+  		},
+  		{
+  			"opcode": "nullValue",
+  			"blockType": "REPORTER",
+  			"text": "null",
+  			"description": "Creates a null value.",
+  			"arguments": {}
+  		},
+  		{
+  			"opcode": "pair",
+  			"blockType": "REPORTER",
+  			"text": "pair key [KEY] value [VALUE]",
+  			"description": "Creates a map key/value pair.",
+  			"arguments": {
+  				"KEY": {
+  					"type": "STRING",
+  					"defaultValue": "temperature"
+  				},
+  				"VALUE": {
+  					"type": "STRING",
+  					"defaultValue": "21"
+  				}
+  			}
+  		},
+  		{
+  			"opcode": "map",
+  			"blockType": "REPORTER",
+  			"text": "map [ENTRIES]",
+  			"description": "Creates an object/map from pair fragments.",
+  			"arguments": { "ENTRIES": {
+  				"type": "STRING",
+  				"defaultValue": ""
+  			} }
+  		},
+  		{
+  			"opcode": "sequence",
+  			"blockType": "REPORTER",
+  			"text": "sequence [ITEMS]",
+  			"description": "Creates an array/sequence from item fragments.",
+  			"arguments": { "ITEMS": {
+  				"type": "STRING",
+  				"defaultValue": ""
+  			} }
+  		},
+  		{
+  			"opcode": "concat",
+  			"blockType": "REPORTER",
+  			"text": "[LEFT] followed by [RIGHT]",
+  			"description": "Combines fragments without mutating either input.",
+  			"arguments": {
+  				"LEFT": {
+  					"type": "STRING",
+  					"defaultValue": ""
+  				},
+  				"RIGHT": {
+  					"type": "STRING",
+  					"defaultValue": ""
+  				}
+  			}
+  		},
+  		{
+  			"opcode": "renderYaml",
+  			"blockType": "REPORTER",
+  			"text": "render YAML [FRAGMENT]",
+  			"description": "Renders a fragment to YAML text.",
+  			"arguments": { "FRAGMENT": {
+  				"type": "STRING",
+  				"defaultValue": ""
+  			} }
+  		},
+  		{
+  			"opcode": "renderJson",
+  			"blockType": "REPORTER",
+  			"text": "render JSON [FRAGMENT]",
+  			"description": "Renders a fragment to formatted JSON text.",
+  			"arguments": { "FRAGMENT": {
+  				"type": "STRING",
+  				"defaultValue": ""
+  			} }
+  		},
+  		{
+  			"opcode": "validateSchema",
+  			"blockType": "REPORTER",
+  			"text": "validate JSON Schema [SCHEMA] data [FRAGMENT]",
+  			"description": "Returns JSON Schema validation details for the built data.",
+  			"arguments": {
+  				"SCHEMA": {
+  					"type": "STRING",
+  					"defaultValue": "{\"type\":\"object\",\"required\":[\"temperature\"]}"
+  				},
+  				"FRAGMENT": {
+  					"type": "STRING",
+  					"defaultValue": ""
+  				}
+  			}
+  		},
+  		{
+  			"opcode": "isValidSchema",
+  			"blockType": "BOOLEAN",
+  			"text": "JSON Schema [SCHEMA] accepts data [FRAGMENT]?",
+  			"description": "Reports whether the built data passes JSON Schema validation.",
+  			"arguments": {
+  				"SCHEMA": {
+  					"type": "STRING",
+  					"defaultValue": "{\"type\":\"object\",\"required\":[\"temperature\"]}"
+  				},
+  				"FRAGMENT": {
+  					"type": "STRING",
+  					"defaultValue": ""
+  				}
+  			}
+  		},
+  		{
+  			"opcode": "parseText",
+  			"blockType": "REPORTER",
+  			"text": "parse [TEXT] as [FORMAT]",
+  			"description": "Safely parses the provided YAML or JSON text into a fragment.",
+  			"arguments": {
+  				"TEXT": {
+  					"type": "STRING",
+  					"defaultValue": "name: sensor"
+  				},
+  				"FORMAT": {
+  					"type": "STRING",
+  					"defaultValue": "auto",
+  					"menu": "parseFormat"
+  				}
+  			}
+  		},
+  		{
+  			"opcode": "lastParseSucceeded",
+  			"blockType": "BOOLEAN",
+  			"text": "last parse succeeded?",
+  			"description": "Reports whether the most recent parse operation succeeded.",
+  			"arguments": {}
+  		},
+  		{
+  			"opcode": "lastParseFormat",
+  			"blockType": "REPORTER",
+  			"text": "last parse format",
+  			"description": "Reports the format selected by the most recent parse operation.",
+  			"arguments": {}
+  		},
+  		{
+  			"opcode": "lastParseDiagnostic",
+  			"blockType": "REPORTER",
+  			"text": "last parse diagnostic",
+  			"description": "Reports the code, location, and message for the most recent parse failure.",
+  			"arguments": {}
+  		},
+  		{
+  			"opcode": "lastParseLine",
+  			"blockType": "REPORTER",
+  			"text": "last parse error line",
+  			"description": "Reports the one-based line of the most recent parse failure, or zero when unavailable.",
+  			"arguments": {}
+  		},
+  		{
+  			"opcode": "lastParseColumn",
+  			"blockType": "REPORTER",
+  			"text": "last parse error column",
+  			"description": "Reports the one-based column of the most recent parse failure, or zero when unavailable.",
+  			"arguments": {}
+  		}
+  	]
+  };
+  //#endregion
+  //#region node_modules/.pnpm/jsonc-parser@3.3.1/node_modules/jsonc-parser/lib/esm/impl/scanner.js
+  var import_ajv = /* @__PURE__ */ __toESM(require_ajv(), 1);
   /**
   * Creates a JSON scanner on the given text.
   * If ignoreTrivia is set, whitespaces or comments are ignored.
@@ -13406,13 +13642,18 @@
   var menuDefinitions = block_definitions_default.menus;
   var YamlJsonExtension = class {
   	constructor() {
+  		this.fixedInputs = fixedInputRegistration(typeof Scratch === "undefined" ? void 0 : Scratch);
   		this.lastParse = {
   			success: false,
   			format: "",
   			diagnostic: null
   		};
   	}
+  	dispose() {
+  		this.fixedInputs.dispose();
+  	}
   	getInfo() {
+  		this.fixedInputs.ensure(blockDefinitions.map((block) => `${extensionConfig.id}_${block.opcode}`));
   		return {
   			id: extensionConfig.id,
   			name: Scratch.translate(block_definitions_default.extensionName),

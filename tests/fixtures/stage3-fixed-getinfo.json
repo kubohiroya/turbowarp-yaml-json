@@ -1,0 +1,213 @@
+[
+  {
+    "id": "native-default",
+    "values": {},
+    "getInfo": {
+      "id": "kubohiroyayamljson",
+      "name": "TurboWarp YAML/JSON",
+      "docsURI": "https://kubohiroya.github.io/turbowarp-yaml-json/",
+      "blockIconURI": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHJlY3QgeD0iNiIgeT0iOCIgd2lkdGg9IjM2IiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzJGNjM4NiIvPjxwYXRoIGQ9Ik0xMyAzMFYxOGw1IDcgNS03djEyTTMwIDE4djEyTTI2IDMwaDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=",
+      "blocks": [
+        {
+          "opcode": "string",
+          "blockType": "reporter",
+          "text": "string [VALUE]",
+          "arguments": {
+            "VALUE": {
+              "type": "string",
+              "defaultValue": "sensor"
+            }
+          }
+        },
+        {
+          "opcode": "number",
+          "blockType": "reporter",
+          "text": "number [VALUE]",
+          "arguments": {
+            "VALUE": {
+              "type": "number",
+              "defaultValue": 21
+            }
+          }
+        },
+        {
+          "opcode": "boolean",
+          "blockType": "reporter",
+          "text": "boolean [VALUE]",
+          "arguments": {
+            "VALUE": {
+              "type": "Boolean",
+              "defaultValue": true
+            }
+          }
+        },
+        {
+          "opcode": "nullValue",
+          "blockType": "reporter",
+          "text": "null",
+          "arguments": {}
+        },
+        {
+          "opcode": "pair",
+          "blockType": "reporter",
+          "text": "pair key [KEY] value [VALUE]",
+          "arguments": {
+            "KEY": {
+              "type": "string",
+              "defaultValue": "temperature"
+            },
+            "VALUE": {
+              "type": "string",
+              "defaultValue": "21"
+            }
+          }
+        },
+        {
+          "opcode": "map",
+          "blockType": "reporter",
+          "text": "map [ENTRIES]",
+          "arguments": {
+            "ENTRIES": {
+              "type": "string",
+              "defaultValue": ""
+            }
+          }
+        },
+        {
+          "opcode": "sequence",
+          "blockType": "reporter",
+          "text": "sequence [ITEMS]",
+          "arguments": {
+            "ITEMS": {
+              "type": "string",
+              "defaultValue": ""
+            }
+          }
+        },
+        {
+          "opcode": "concat",
+          "blockType": "reporter",
+          "text": "[LEFT] followed by [RIGHT]",
+          "arguments": {
+            "LEFT": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "RIGHT": {
+              "type": "string",
+              "defaultValue": ""
+            }
+          }
+        },
+        {
+          "opcode": "renderYaml",
+          "blockType": "reporter",
+          "text": "render YAML [FRAGMENT]",
+          "arguments": {
+            "FRAGMENT": {
+              "type": "string",
+              "defaultValue": ""
+            }
+          }
+        },
+        {
+          "opcode": "renderJson",
+          "blockType": "reporter",
+          "text": "render JSON [FRAGMENT]",
+          "arguments": {
+            "FRAGMENT": {
+              "type": "string",
+              "defaultValue": ""
+            }
+          }
+        },
+        {
+          "opcode": "validateSchema",
+          "blockType": "reporter",
+          "text": "validate JSON Schema [SCHEMA] data [FRAGMENT]",
+          "arguments": {
+            "SCHEMA": {
+              "type": "string",
+              "defaultValue": "{\"type\":\"object\",\"required\":[\"temperature\"]}"
+            },
+            "FRAGMENT": {
+              "type": "string",
+              "defaultValue": ""
+            }
+          }
+        },
+        {
+          "opcode": "isValidSchema",
+          "blockType": "Boolean",
+          "text": "JSON Schema [SCHEMA] accepts data [FRAGMENT]?",
+          "arguments": {
+            "SCHEMA": {
+              "type": "string",
+              "defaultValue": "{\"type\":\"object\",\"required\":[\"temperature\"]}"
+            },
+            "FRAGMENT": {
+              "type": "string",
+              "defaultValue": ""
+            }
+          }
+        },
+        {
+          "opcode": "parseText",
+          "blockType": "reporter",
+          "text": "parse [TEXT] as [FORMAT]",
+          "arguments": {
+            "TEXT": {
+              "type": "string",
+              "defaultValue": "name: sensor"
+            },
+            "FORMAT": {
+              "type": "string",
+              "defaultValue": "auto",
+              "menu": "parseFormat"
+            }
+          }
+        },
+        {
+          "opcode": "lastParseSucceeded",
+          "blockType": "Boolean",
+          "text": "last parse succeeded?",
+          "arguments": {}
+        },
+        {
+          "opcode": "lastParseFormat",
+          "blockType": "reporter",
+          "text": "last parse format",
+          "arguments": {}
+        },
+        {
+          "opcode": "lastParseDiagnostic",
+          "blockType": "reporter",
+          "text": "last parse diagnostic",
+          "arguments": {}
+        },
+        {
+          "opcode": "lastParseLine",
+          "blockType": "reporter",
+          "text": "last parse error line",
+          "arguments": {}
+        },
+        {
+          "opcode": "lastParseColumn",
+          "blockType": "reporter",
+          "text": "last parse error column",
+          "arguments": {}
+        }
+      ],
+      "menus": {
+        "parseFormat": {
+          "acceptReporters": false,
+          "items": [
+            "auto",
+            "YAML",
+            "JSON"
+          ]
+        }
+      }
+    }
+  }
+]
