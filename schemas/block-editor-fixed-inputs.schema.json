@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kubohiroya.github.io/turbowarp-yaml-json/schemas/block-editor-fixed-inputs.schema.json",
+  "$defs": {
+    "number": {
+      "type": "object",
+      "properties": {
+        "VALUE": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "VALUE"
+      ],
+      "additionalProperties": true
+    },
+    "parseText": {
+      "type": "object",
+      "properties": {
+        "FORMAT": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "YAML",
+            "JSON"
+          ]
+        }
+      },
+      "required": [
+        "FORMAT"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

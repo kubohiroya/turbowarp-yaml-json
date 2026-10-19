@@ -1,3 +1,4 @@
+import {fixedInputRegistration} from './fixed-input-editors.js';
 import {extensionConfig} from './config';
 import definitions from './block-definitions.json';
 import {
@@ -53,13 +54,18 @@ const blockDefinitions = definitions.blocks as readonly BlockDefinition[];
 const menuDefinitions = definitions.menus as Record<string, MenuDefinition>;
 
 export class YamlJsonExtension implements TurboWarpExtension {
+  private readonly fixedInputs = fixedInputRegistration(typeof Scratch === 'undefined' ? undefined : Scratch);
+
   private lastParse: LastParseState = {
     success: false,
     format: '',
     diagnostic: null
   };
 
+  public dispose(): void {this.fixedInputs.dispose();}
+
   public getInfo(): Record<string, unknown> {
+    this.fixedInputs.ensure(blockDefinitions.map(block => `${extensionConfig.id}_${block.opcode}`));
     return {
       id: extensionConfig.id,
       name: Scratch.translate(definitions.extensionName),
