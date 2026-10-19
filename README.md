@@ -31,7 +31,7 @@ pnpm install --frozen-lockfile
 The package is version-pinned when used from npm:
 
 ```bash
-pnpm add --save-exact @kubohiroya/turbowarp-yaml-json@0.3.0
+pnpm add --save-exact @kubohiroya/turbowarp-yaml-json@0.3.1
 ```
 
 ## Quick Start

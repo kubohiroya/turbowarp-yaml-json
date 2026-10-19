@@ -6352,7 +6352,7 @@
   	});
   }));
   //#endregion
-  //#region node_modules/.pnpm/@kubohiroya+turbowarp-extension-data-editor@https+++codeload.github.com+kubohiroya+turb_5174995e0659a2991b0bf213cfddbf18/node_modules/@kubohiroya/turbowarp-extension-data-editor/dist/fixed-input-schema.js
+  //#region node_modules/.pnpm/@kubohiroya+turbowarp-extension-data-editor@0.2.1_react@18.3.1/node_modules/@kubohiroya/turbowarp-extension-data-editor/dist/fixed-input-schema.js
   var numberToken = /^-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$/u;
   var invalidNumber = Object.freeze({
   	kind: "invalid",
