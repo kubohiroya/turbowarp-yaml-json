@@ -11,14 +11,14 @@ beforeEach(() => vi.stubGlobal('Scratch', {
 }));
 afterEach(() => vi.unstubAllGlobals());
 it('retains the exact baseline getInfo with the legacy host capability', () => {
-  const owner = new YamlJsonExtension();
+  const owner = new YamlJsonExtension(Scratch);
   expect(owner.getInfo()).toEqual(baseline.find(s => s.id === 'native-default')!.getInfo);
   void owner.dispose();
 });
 it('registers only the real visible opcodes once and disposes its own registrations', () => {
   const cleanup = vi.fn();const register = vi.fn(() => cleanup);
   (globalThis as unknown as {Scratch: {gui: unknown}}).Scratch.gui = {blockEditors: {apiVersion: 1, registerFixedInputEditor: register}};
-  const owner = new YamlJsonExtension();
+  const owner = new YamlJsonExtension(Scratch);
   const info = owner.getInfo();owner.getInfo();
   const expected = baseline.find(s => s.id === "native-default")!.getInfo;
   expect(info).toEqual(expected);
@@ -33,6 +33,7 @@ it('retains parse aliases and excludes the Boolean reporter argument', () => {
   for (const [raw, expected] of [[' json ', 'JSON'], [' yAmL ', 'YAML'], [' AUTO ', 'auto']]) expect(format.read(raw!)).toBe(expected);
 });
 
-it('retains construction before Scratch is installed', () => {
-  vi.unstubAllGlobals();expect(() => new YamlJsonExtension()).not.toThrow();
+it('constructs with an explicit host before global Scratch is installed', () => {
+  const host = Scratch;
+  vi.unstubAllGlobals();expect(() => new YamlJsonExtension(host)).not.toThrow();
 });
