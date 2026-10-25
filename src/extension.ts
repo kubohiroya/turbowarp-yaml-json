@@ -1,6 +1,7 @@
+import type {ScratchApi, TurboWarpExtension} from './runtime-api.js';
 import {fixedInputRegistration} from './fixed-input-editors.js';
-import {extensionConfig} from './config';
-import definitions from './block-definitions.json';
+import {extensionConfig} from './config.js';
+import definitions from './block-definitions.json' with {type: 'json'};
 import {
   booleanValue,
   concat,
@@ -19,7 +20,7 @@ import {
   type ParseDiagnostic,
   type ParseFormat,
   type ResolvedParseFormat
-} from './yaml-json';
+} from './yaml-json.js';
 
 type BlockTypeName = 'REPORTER' | 'BOOLEAN';
 type ArgumentTypeName = 'STRING' | 'NUMBER' | 'BOOLEAN';
@@ -54,9 +55,11 @@ const blockDefinitions = definitions.blocks as readonly BlockDefinition[];
 const menuDefinitions = definitions.menus as Record<string, MenuDefinition>;
 
 export class YamlJsonExtension implements TurboWarpExtension {
-  private readonly fixedInputs = fixedInputRegistration(
-    typeof Scratch === 'undefined' ? undefined : Scratch
-  );
+  private readonly fixedInputs: ReturnType<typeof fixedInputRegistration>;
+
+  public constructor(private readonly scratch: ScratchApi) {
+    this.fixedInputs = fixedInputRegistration(scratch);
+  }
 
   private lastParse: LastParseState = {
     success: false,
@@ -74,7 +77,7 @@ export class YamlJsonExtension implements TurboWarpExtension {
     );
     return {
       id: extensionConfig.id,
-      name: Scratch.translate(definitions.extensionName),
+      name: this.scratch.translate(definitions.extensionName),
       docsURI: extensionConfig.docsURI,
       blockIconURI: extensionConfig.blockIconURI,
       blocks: blockDefinitions.map((block) => this.toScratchBlock(block)),
@@ -83,7 +86,7 @@ export class YamlJsonExtension implements TurboWarpExtension {
           id,
           {
             acceptReporters: menu.acceptReporters,
-            items: menu.items.map((item) => Scratch.translate(item))
+            items: menu.items.map((item) => this.scratch.translate(item))
           }
         ])
       )
@@ -91,15 +94,15 @@ export class YamlJsonExtension implements TurboWarpExtension {
   }
 
   public string(args: {VALUE: unknown}): string {
-    return encode(stringValue(Scratch.Cast.toString(args.VALUE)));
+    return encode(stringValue(this.scratch.Cast.toString(args.VALUE)));
   }
 
   public number(args: {VALUE: unknown}): string {
-    return encode(numberValue(Scratch.Cast.toNumber(args.VALUE)));
+    return encode(numberValue(this.scratch.Cast.toNumber(args.VALUE)));
   }
 
   public boolean(args: {VALUE: unknown}): string {
-    return encode(booleanValue(Scratch.Cast.toBoolean(args.VALUE)));
+    return encode(booleanValue(this.scratch.Cast.toBoolean(args.VALUE)));
   }
 
   public nullValue(): string {
@@ -107,49 +110,56 @@ export class YamlJsonExtension implements TurboWarpExtension {
   }
 
   public pair(args: {KEY: unknown; VALUE: unknown}): string {
-    return encode(pair(Scratch.Cast.toString(args.KEY), decodeOrString(args.VALUE)));
+    return encode(
+      pair(this.scratch.Cast.toString(args.KEY), decodeOrString(this.scratch, args.VALUE))
+    );
   }
 
   public map(args: {ENTRIES: unknown}): string {
-    return encode(map(decodeOrString(args.ENTRIES, true)));
+    return encode(map(decodeOrString(this.scratch, args.ENTRIES, true)));
   }
 
   public sequence(args: {ITEMS: unknown}): string {
-    return encode(sequence(decodeOrString(args.ITEMS, true)));
+    return encode(sequence(decodeOrString(this.scratch, args.ITEMS, true)));
   }
 
   public concat(args: {LEFT: unknown; RIGHT: unknown}): string {
-    return encode(concat(decodeOrString(args.LEFT, true), decodeOrString(args.RIGHT, true)));
+    return encode(
+      concat(
+        decodeOrString(this.scratch, args.LEFT, true),
+        decodeOrString(this.scratch, args.RIGHT, true)
+      )
+    );
   }
 
   public renderYaml(args: {FRAGMENT: unknown}): string {
-    return renderYaml(decodeOrString(args.FRAGMENT, true));
+    return renderYaml(decodeOrString(this.scratch, args.FRAGMENT, true));
   }
 
   public renderJson(args: {FRAGMENT: unknown}): string {
-    return renderJson(decodeOrString(args.FRAGMENT, true));
+    return renderJson(decodeOrString(this.scratch, args.FRAGMENT, true));
   }
 
   public validateSchema(args: {SCHEMA: unknown; FRAGMENT: unknown}): string {
     return formatValidationResult(
       validateWithJsonSchema(
-        Scratch.Cast.toString(args.SCHEMA),
-        decodeOrString(args.FRAGMENT, true)
+        this.scratch.Cast.toString(args.SCHEMA),
+        decodeOrString(this.scratch, args.FRAGMENT, true)
       )
     );
   }
 
   public isValidSchema(args: {SCHEMA: unknown; FRAGMENT: unknown}): boolean {
     return validateWithJsonSchema(
-      Scratch.Cast.toString(args.SCHEMA),
-      decodeOrString(args.FRAGMENT, true)
+      this.scratch.Cast.toString(args.SCHEMA),
+      decodeOrString(this.scratch, args.FRAGMENT, true)
     ).valid;
   }
 
   public parseText(args: {TEXT: unknown; FORMAT: unknown}): string {
     const result = parseData(
-      Scratch.Cast.toString(args.TEXT),
-      normalizeParseFormat(Scratch.Cast.toString(args.FORMAT))
+      this.scratch.Cast.toString(args.TEXT),
+      normalizeParseFormat(this.scratch.Cast.toString(args.FORMAT))
     );
     this.lastParse = {
       success: result.success,
@@ -186,13 +196,13 @@ export class YamlJsonExtension implements TurboWarpExtension {
   private toScratchBlock(block: BlockDefinition): Record<string, unknown> {
     return {
       opcode: block.opcode,
-      blockType: Scratch.BlockType[block.blockType],
-      text: Scratch.translate(block.text),
+      blockType: this.scratch.BlockType[block.blockType],
+      text: this.scratch.translate(block.text),
       arguments: Object.fromEntries(
         Object.entries(block.arguments).map(([name, argument]) => [
           name,
           {
-            type: Scratch.ArgumentType[argument.type],
+            type: this.scratch.ArgumentType[argument.type],
             defaultValue: argument.defaultValue,
             ...(argument.menu === undefined ? {} : {menu: argument.menu})
           }
@@ -212,8 +222,8 @@ function encode(fragment: DataFragment): string {
   return `${SERIALIZED_PREFIX}${JSON.stringify(fragment)}`;
 }
 
-function decodeOrString(value: unknown, blankAsEmpty = false): DataFragment {
-  const raw = Scratch.Cast.toString(value);
+function decodeOrString(scratch: ScratchApi, value: unknown, blankAsEmpty = false): DataFragment {
+  const raw = scratch.Cast.toString(value);
   if (blankAsEmpty && raw.length === 0) return {kind: 'empty'};
   if (!raw.startsWith(SERIALIZED_PREFIX)) return stringValue(raw);
   return parseFragment(raw.slice(SERIALIZED_PREFIX.length));

@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "lib-module",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "types": [],
+    "noEmit": false
+  },
+  "include": ["src/bundle-module.ts"],
+  "exclude": ["tests", "scripts", "node_modules"]
+}

@@ -259,6 +259,48 @@ Scratch reporter blocks exchange opaque `turbowarp-yaml-json:v1:` values while b
 
 Top-level `concat` merges object/map fragments when all children are maps or pairs. Other top-level combinations render as a sequence-like list of values for JSON value conversion.
 
+## Integrated-build module API
+
+Building this source also produces a `./bundle-module` ESM entry and declarations
+in `lib-module/`. This entry is separate from the standalone JavaScript file.
+
+```ts
+import {bundleModuleMetadata, createExtension, type ScratchApi}
+  from '@kubohiroya/turbowarp-yaml-json/bundle-module';
+
+export function createMember(memberScratch: ScratchApi) {
+  return createExtension(memberScratch);
+}
+```
+
+Importing the entry does not access global Scratch / window / document or create
+and register an extension. Each explicit createExtension(memberScratch) call
+returns a fresh instance bound to that host, including deferred block execution,
+editor helpers and lifecycle callbacks. The factory does not call
+Scratch.extensions.register; the standalone entry uses the same factory and
+registers exactly once.
+
+The frozen bundleModuleMetadata declares formatVersion: 1, the original id and
+unsandboxed requirement. An integrated host validates these before creation and
+owns registration and disposal. Existing IDs, opcodes and saved data stay unchanged.
+
+The fragment format, parser limits, diagnostics and runtime validation of user-supplied JSON Schema are unchanged. Ajv remains a runtime dependency. As before, getInfo() activates the available fixed-input metadata once; dispose() releases only this instance registrations and listeners. Internal callers constructing YamlJsonExtension directly now pass the host explicitly.
+
+Runtime dependencies (including yaml and their subpaths) remain external imports.
+Only the existing small, pure development-time editor helpers are included, so
+production consumers need no editor package or GUI engine. Public types use the
+same ES2022 libraries as the project tsconfig; generated JavaScript targets ES2020.
+The package retains its existing exports and adds ./bundle-module; no template
+runtime dependency is required.
+
+pnpm run build:module builds this entry; pnpm run check:module packs and installs
+the actual package with production dependencies only, checks host isolation,
+standalone parity and public types, and rejects editor-engine dependency leaks.
+The integrated sb3-toolchain build remains a later step in
+[sb3-toolchain #65](https://github.com/kubohiroya/sb3-toolchain/issues/65).
+To roll back, continue loading the existing classic dist artifact without selecting
+this module entry. No runtime flag or saved-data migration is introduced.
+
 ## Development
 
 ```bash

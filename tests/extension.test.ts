@@ -29,7 +29,7 @@ afterEach(() => {
 
 describe('YamlJsonExtension', () => {
   it('publishes block metadata', () => {
-    const info = new YamlJsonExtension().getInfo() as {
+    const info = new YamlJsonExtension(Scratch).getInfo() as {
       name: string;
       blocks: Array<{opcode: string}>;
     };
@@ -41,7 +41,7 @@ describe('YamlJsonExtension', () => {
   });
 
   it('builds and renders YAML/JSON through reporter values', () => {
-    const extension = new YamlJsonExtension();
+    const extension = new YamlJsonExtension(Scratch);
     const readings = extension.sequence({
       ITEMS: extension.concat({
         LEFT: extension.number({VALUE: 21}),
@@ -65,7 +65,7 @@ describe('YamlJsonExtension', () => {
   });
 
   it('validates reporter values with JSON Schema', () => {
-    const extension = new YamlJsonExtension();
+    const extension = new YamlJsonExtension(Scratch);
     const schema = JSON.stringify({
       type: 'object',
       required: ['temperature'],
@@ -83,7 +83,7 @@ describe('YamlJsonExtension', () => {
   });
 
   it('treats empty container defaults as empty fragments', () => {
-    const extension = new YamlJsonExtension();
+    const extension = new YamlJsonExtension(Scratch);
     expect(extension.renderYaml({FRAGMENT: extension.map({ENTRIES: ''})})).toBe('{}');
     expect(extension.renderYaml({FRAGMENT: extension.sequence({ITEMS: ''})})).toBe('[]');
     expect(
@@ -94,7 +94,7 @@ describe('YamlJsonExtension', () => {
   });
 
   it('parses external text and exposes the most recent result state', () => {
-    const extension = new YamlJsonExtension();
+    const extension = new YamlJsonExtension(Scratch);
     const fragment = extension.parseText({
       TEXT: 'name: sensor',
       FORMAT: 'YAML'
@@ -107,7 +107,7 @@ describe('YamlJsonExtension', () => {
   });
 
   it('returns an empty reporter value and diagnostics after a failed parse', () => {
-    const extension = new YamlJsonExtension();
+    const extension = new YamlJsonExtension(Scratch);
     expect(extension.parseText({TEXT: '{', FORMAT: 'JSON'})).toBe('');
     expect(extension.lastParseSucceeded()).toBe(false);
     expect(extension.lastParseFormat()).toBe('json');

@@ -31,11 +31,16 @@
     "README.md",
     "README.ja.md",
     "LICENSE",
-    "schemas/"
+    "schemas/",
+    "lib-module/"
   ],
   "exports": {
     ".": "./src/yaml-json.ts",
-    "./extension": "./dist/turbowarp-yaml-json.js"
+    "./extension": "./dist/turbowarp-yaml-json.js",
+    "./bundle-module": {
+      "types": "./lib-module/src/bundle-module.d.ts",
+      "import": "./lib-module/src/bundle-module.js"
+    }
   },
   "publishConfig": {
     "access": "public",
@@ -48,8 +53,8 @@
   "scripts": {
     "dev": "vite build --watch",
     "typecheck": "tsc --noEmit",
-    "build": "vite build",
-    "lint": "eslint src tests vite.config.ts",
+    "build": "vite build && pnpm run build:module",
+    "lint": "eslint src tests vite.config.ts vite.module.config.ts",
     "format": "prettier --write src/block-definitions.json src/config.ts src/extension.ts src/yaml-json.ts tests/extension.test.ts tests/yaml-json.test.ts package.json",
     "format:check": "prettier --check src/block-definitions.json src/config.ts src/extension.ts src/yaml-json.ts tests/extension.test.ts tests/yaml-json.test.ts package.json",
     "test": "vitest run",
@@ -59,8 +64,10 @@
     "template:readme": "node scripts/apply-readme-template.ts",
     "repo:check": "node scripts/check-repo.ts",
     "pack:check": "npm pack --dry-run --ignore-scripts",
-    "check": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test && pnpm run docs:check && pnpm run check:dist && pnpm run repo:check && pnpm run pack:check",
-    "check:dist": "pnpm run build && node scripts/check-dist.ts"
+    "check": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test && pnpm run docs:check && pnpm run check:dist && pnpm run check:module && pnpm run repo:check && pnpm run pack:check",
+    "check:dist": "pnpm run build && node scripts/check-dist.ts",
+    "build:module": "tsc -p tsconfig.module.json && vite build --config vite.module.config.ts",
+    "check:module": "node scripts/check-bundle-module.ts"
   },
   "dependencies": {
     "ajv": "^8.17.1",

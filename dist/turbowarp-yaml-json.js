@@ -13641,13 +13641,14 @@
   var blockDefinitions = block_definitions_default.blocks;
   var menuDefinitions = block_definitions_default.menus;
   var YamlJsonExtension = class {
-  	constructor() {
-  		this.fixedInputs = fixedInputRegistration(typeof Scratch === "undefined" ? void 0 : Scratch);
+  	constructor(scratch) {
+  		this.scratch = scratch;
   		this.lastParse = {
   			success: false,
   			format: "",
   			diagnostic: null
   		};
+  		this.fixedInputs = fixedInputRegistration(scratch);
   	}
   	dispose() {
   		this.fixedInputs.dispose();
@@ -13656,54 +13657,54 @@
   		this.fixedInputs.ensure(blockDefinitions.map((block) => `${extensionConfig.id}_${block.opcode}`));
   		return {
   			id: extensionConfig.id,
-  			name: Scratch.translate(block_definitions_default.extensionName),
+  			name: this.scratch.translate(block_definitions_default.extensionName),
   			docsURI: extensionConfig.docsURI,
   			blockIconURI: extensionConfig.blockIconURI,
   			blocks: blockDefinitions.map((block) => this.toScratchBlock(block)),
   			menus: Object.fromEntries(Object.entries(menuDefinitions).map(([id, menu]) => [id, {
   				acceptReporters: menu.acceptReporters,
-  				items: menu.items.map((item) => Scratch.translate(item))
+  				items: menu.items.map((item) => this.scratch.translate(item))
   			}]))
   		};
   	}
   	string(args) {
-  		return encode(stringValue(Scratch.Cast.toString(args.VALUE)));
+  		return encode(stringValue(this.scratch.Cast.toString(args.VALUE)));
   	}
   	number(args) {
-  		return encode(numberValue(Scratch.Cast.toNumber(args.VALUE)));
+  		return encode(numberValue(this.scratch.Cast.toNumber(args.VALUE)));
   	}
   	boolean(args) {
-  		return encode(booleanValue(Scratch.Cast.toBoolean(args.VALUE)));
+  		return encode(booleanValue(this.scratch.Cast.toBoolean(args.VALUE)));
   	}
   	nullValue() {
   		return encode(nullValue());
   	}
   	pair(args) {
-  		return encode(pair(Scratch.Cast.toString(args.KEY), decodeOrString(args.VALUE)));
+  		return encode(pair(this.scratch.Cast.toString(args.KEY), decodeOrString(this.scratch, args.VALUE)));
   	}
   	map(args) {
-  		return encode(map(decodeOrString(args.ENTRIES, true)));
+  		return encode(map(decodeOrString(this.scratch, args.ENTRIES, true)));
   	}
   	sequence(args) {
-  		return encode(sequence(decodeOrString(args.ITEMS, true)));
+  		return encode(sequence(decodeOrString(this.scratch, args.ITEMS, true)));
   	}
   	concat(args) {
-  		return encode(concat(decodeOrString(args.LEFT, true), decodeOrString(args.RIGHT, true)));
+  		return encode(concat(decodeOrString(this.scratch, args.LEFT, true), decodeOrString(this.scratch, args.RIGHT, true)));
   	}
   	renderYaml(args) {
-  		return renderYaml(decodeOrString(args.FRAGMENT, true));
+  		return renderYaml(decodeOrString(this.scratch, args.FRAGMENT, true));
   	}
   	renderJson(args) {
-  		return renderJson(decodeOrString(args.FRAGMENT, true));
+  		return renderJson(decodeOrString(this.scratch, args.FRAGMENT, true));
   	}
   	validateSchema(args) {
-  		return formatValidationResult(validateWithJsonSchema(Scratch.Cast.toString(args.SCHEMA), decodeOrString(args.FRAGMENT, true)));
+  		return formatValidationResult(validateWithJsonSchema(this.scratch.Cast.toString(args.SCHEMA), decodeOrString(this.scratch, args.FRAGMENT, true)));
   	}
   	isValidSchema(args) {
-  		return validateWithJsonSchema(Scratch.Cast.toString(args.SCHEMA), decodeOrString(args.FRAGMENT, true)).valid;
+  		return validateWithJsonSchema(this.scratch.Cast.toString(args.SCHEMA), decodeOrString(this.scratch, args.FRAGMENT, true)).valid;
   	}
   	parseText(args) {
-  		const result = parseData(Scratch.Cast.toString(args.TEXT), normalizeParseFormat(Scratch.Cast.toString(args.FORMAT)));
+  		const result = parseData(this.scratch.Cast.toString(args.TEXT), normalizeParseFormat(this.scratch.Cast.toString(args.FORMAT)));
   		this.lastParse = {
   			success: result.success,
   			format: result.format,
@@ -13732,10 +13733,10 @@
   	toScratchBlock(block) {
   		return {
   			opcode: block.opcode,
-  			blockType: Scratch.BlockType[block.blockType],
-  			text: Scratch.translate(block.text),
+  			blockType: this.scratch.BlockType[block.blockType],
+  			text: this.scratch.translate(block.text),
   			arguments: Object.fromEntries(Object.entries(block.arguments).map(([name, argument]) => [name, {
-  				type: Scratch.ArgumentType[argument.type],
+  				type: this.scratch.ArgumentType[argument.type],
   				defaultValue: argument.defaultValue,
   				...argument.menu === void 0 ? {} : { menu: argument.menu }
   			}]))
@@ -13750,8 +13751,8 @@
   function encode(fragment) {
   	return `${SERIALIZED_PREFIX}${JSON.stringify(fragment)}`;
   }
-  function decodeOrString(value, blankAsEmpty = false) {
-  	const raw = Scratch.Cast.toString(value);
+  function decodeOrString(scratch, value, blankAsEmpty = false) {
+  	const raw = scratch.Cast.toString(value);
   	if (blankAsEmpty && raw.length === 0) return { kind: "empty" };
   	if (!raw.startsWith(SERIALIZED_PREFIX)) return stringValue(raw);
   	return parseFragment(raw.slice(23));
@@ -13778,10 +13779,19 @@
   function isScalarValue(value) {
   	return value === null || typeof value === "string" || typeof value === "boolean" || typeof value === "number" && Number.isFinite(value);
   }
+  Object.freeze({
+  	formatVersion: 1,
+  	id: extensionConfig.id,
+  	unsandboxed: extensionConfig.unsandboxed ? "required" : "not-needed"
+  });
+  /** The caller supplies the member host and owns registration and lifetime. */
+  function createExtension(scratch) {
+  	return new YamlJsonExtension(scratch);
+  }
   //#endregion
   //#region src/index.ts
   if (extensionConfig.unsandboxed && !Scratch.extensions.unsandboxed) throw new Error(`${extensionConfig.name} must run unsandboxed.`);
-  Scratch.extensions.register(new YamlJsonExtension());
+  Scratch.extensions.register(createExtension(Scratch));
   //#endregion
 
 })(Scratch);

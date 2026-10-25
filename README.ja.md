@@ -29,6 +29,42 @@ parse対象はblockへ直接渡された文字列だけです。この拡張はf
 
 追加されたparse blockは既存builder blockを変更しない追加APIです。問題がある場合はparse blockを使わず、従来どおりfragment構築blockでJSON相当の値を作る運用へ戻せます。
 
+## 統合ビルド用module API
+
+このソースのbuildは、単体JSとは別に、統合用のESM入口`./bundle-module`と
+型宣言を`lib-module/`へ生成します。
+
+```ts
+import {bundleModuleMetadata, createExtension, type ScratchApi}
+  from '@kubohiroya/turbowarp-yaml-json/bundle-module';
+
+export function createMember(memberScratch: ScratchApi) {
+  return createExtension(memberScratch);
+}
+```
+
+import時はglobal Scratch / window / documentを参照せず、拡張の生成・登録を行いません。
+明示的なcreateExtension(memberScratch)ごとに新しいinstanceを返し、後から実行する
+ブロック・編集用補助処理・lifecycle callbackも同じhostを使います。factoryは
+Scratch.extensions.registerを呼びません。単体entryも同じfactoryを使い、登録は1回です。
+
+凍結されたbundleModuleMetadataはformatVersion: 1、元のid、unsandboxed条件を
+宣言します。統合hostが生成前に検査し、登録とdisposeを管理します。ID・opcode・
+保存データ形式を変更しません。
+
+フラグメント形式・解析制限・診断・利用者指定JSON Schemaの実行時検証を維持します。Ajvは引き続きruntime依存です。従来どおりgetInfo()で利用可能な固定入力metadataを1回登録し、dispose()はこのinstanceの登録とlistenerを解除します。YamlJsonExtensionを直接newする内部コードでもhostを明示的に渡します。
+
+yaml等のruntime依存とそのsubpathは外部importのまま保持します。既存の小さな編集用
+純粋ヘルパーだけを含め、production consumerには編集packageやGUIエンジンを要求しません。
+公開型は既存tsconfigと同じES2022の型ライブラリを使い、生成JSはES2020を対象とします。
+既存exportsを維持して./bundle-moduleを追加し、templateへのruntime依存は追加しません。
+
+pnpm run build:moduleで生成し、pnpm run check:moduleは実tarballをproduction依存だけの
+consumerへinstallしてhost分離・単体版との動作一致・公開型・編集エンジンの非混入を検査します。
+sb3-toolchain側の統合buildは[sb3-toolchain #65](https://github.com/kubohiroya/sb3-toolchain/issues/65)の後続です。
+切戻しはこのmodule入口を選択せず従来のclassic distを読み込みます。新しいruntimeフラグや
+保存データの移行は導入しません。
+
 ## 開発
 
 ```bash
