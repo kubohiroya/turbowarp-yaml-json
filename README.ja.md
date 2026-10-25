@@ -1,5 +1,7 @@
 # TurboWarp YAML/JSON
 
+<img src="assets/block-icon.svg" alt="" width="48" height="48">
+
 [English](README.md)
 
 TurboWarp 上で YAML／JSON 文字列を安全に parse するか、構造化データを immutable な reporter 値として組み立て、最後の出力境界で YAML または JSON 文字列へ render する拡張です。
