@@ -70,6 +70,7 @@ sb3-toolchain側の統合buildは[sb3-toolchain #65](https://github.com/kubohiro
 ## 開発
 
 ```bash
+npm install --global corepack@latest
 corepack enable
 pnpm install --frozen-lockfile
 pnpm run check
