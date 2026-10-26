@@ -17,7 +17,7 @@ A TurboWarp extension for safely parsing YAML/JSON text or building structured d
 
 ## Requirements and safety
 
-- Node.js 22 or newer;
+- Node.js 24 or newer;
 - pnpm through Corepack;
 - TurboWarp's unsandboxed extension option is not required.
 
@@ -26,6 +26,7 @@ Strings are quoted when rendered. Parsing is limited to the string passed direct
 ## Installation
 
 ```bash
+npm install --global corepack@latest
 corepack enable
 pnpm install --frozen-lockfile
 ```
