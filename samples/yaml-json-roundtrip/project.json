@@ -95,28 +95,15 @@
                 10,
                 "name: TurboWarp\nscore: 7"
               ]
-            ],
-            "FORMAT": [
-              1,
-              "b5"
             ]
           },
-          "fields": {},
-          "shadow": false,
-          "topLevel": false
-        },
-        "b5": {
-          "opcode": "kubohiroyayamljson_menu_parseFormat",
-          "parent": "b4",
-          "next": null,
-          "inputs": {},
           "fields": {
-            "parseFormat": [
-              "yaml",
+            "FORMAT": [
+              "YAML",
               null
             ]
           },
-          "shadow": true,
+          "shadow": false,
           "topLevel": false
         },
         "b6": {
@@ -337,7 +324,7 @@
       "width": 0,
       "height": 0,
       "x": 18,
-      "y": 148,
+      "y": 155,
       "visible": true,
       "sliderMin": 0,
       "sliderMax": 100,
@@ -355,7 +342,7 @@
       "width": 0,
       "height": 0,
       "x": 18,
-      "y": 181,
+      "y": 235,
       "visible": true,
       "sliderMin": 0,
       "sliderMax": 100,
