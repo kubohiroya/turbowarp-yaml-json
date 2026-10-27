@@ -1,0 +1,358 @@
+{
+  "targets": [
+    {
+      "isStage": true,
+      "name": "Stage",
+      "variables": {
+        "sample-state": [
+          "Sample state",
+          ""
+        ],
+        "fragment": [
+          "Parsed fragment",
+          ""
+        ],
+        "parsed": [
+          "Parse succeeded",
+          ""
+        ],
+        "json": [
+          "JSON output",
+          ""
+        ],
+        "yaml": [
+          "YAML output",
+          ""
+        ]
+      },
+      "lists": {},
+      "broadcasts": {},
+      "blocks": {
+        "b1": {
+          "opcode": "event_whenflagclicked",
+          "parent": null,
+          "next": "b2",
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": true,
+          "x": 35,
+          "y": 35
+        },
+        "b2": {
+          "opcode": "data_setvariableto",
+          "parent": "b1",
+          "next": "b3",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                10,
+                "Running"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Sample state",
+              "sample-state"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b3": {
+          "opcode": "data_setvariableto",
+          "parent": "b2",
+          "next": "b6",
+          "inputs": {
+            "VALUE": [
+              3,
+              "b4",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Parsed fragment",
+              "fragment"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b4": {
+          "opcode": "kubohiroyayamljson_parseText",
+          "parent": "b3",
+          "next": null,
+          "inputs": {
+            "TEXT": [
+              1,
+              [
+                10,
+                "name: TurboWarp\nscore: 7"
+              ]
+            ]
+          },
+          "fields": {
+            "FORMAT": [
+              "YAML",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b6": {
+          "opcode": "data_setvariableto",
+          "parent": "b3",
+          "next": "b8",
+          "inputs": {
+            "VALUE": [
+              3,
+              "b7",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Parse succeeded",
+              "parsed"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b7": {
+          "opcode": "kubohiroyayamljson_lastParseSucceeded",
+          "parent": "b6",
+          "next": null,
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b8": {
+          "opcode": "data_setvariableto",
+          "parent": "b6",
+          "next": "b11",
+          "inputs": {
+            "VALUE": [
+              3,
+              "b9",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "JSON output",
+              "json"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b9": {
+          "opcode": "kubohiroyayamljson_renderJson",
+          "parent": "b8",
+          "next": null,
+          "inputs": {
+            "FRAGMENT": [
+              3,
+              "b10",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b10": {
+          "opcode": "data_variable",
+          "parent": "b9",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "VARIABLE": [
+              "Parsed fragment",
+              "fragment"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b11": {
+          "opcode": "data_setvariableto",
+          "parent": "b8",
+          "next": "b14",
+          "inputs": {
+            "VALUE": [
+              3,
+              "b12",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "YAML output",
+              "yaml"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b12": {
+          "opcode": "kubohiroyayamljson_renderYaml",
+          "parent": "b11",
+          "next": null,
+          "inputs": {
+            "FRAGMENT": [
+              3,
+              "b13",
+              [
+                10,
+                ""
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b13": {
+          "opcode": "data_variable",
+          "parent": "b12",
+          "next": null,
+          "inputs": {},
+          "fields": {
+            "VARIABLE": [
+              "Parsed fragment",
+              "fragment"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "b14": {
+          "opcode": "data_setvariableto",
+          "parent": "b11",
+          "next": null,
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                10,
+                "Ready"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "Sample state",
+              "sample-state"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        }
+      },
+      "comments": {},
+      "currentCostume": 0,
+      "costumes": [
+        {
+          "assetId": "",
+          "name": "Instructions",
+          "bitmapResolution": 1,
+          "md5ext": "backdrop.svg",
+          "dataFormat": "svg",
+          "rotationCenterX": 240,
+          "rotationCenterY": 180
+        }
+      ],
+      "sounds": [],
+      "volume": 100,
+      "layerOrder": 0,
+      "tempo": 60,
+      "videoTransparency": 50,
+      "videoState": "off",
+      "textToSpeechLanguage": null
+    }
+  ],
+  "monitors": [
+    {
+      "id": "parsed",
+      "mode": "default",
+      "opcode": "data_variable",
+      "params": {
+        "VARIABLE": "Parse succeeded"
+      },
+      "spriteName": null,
+      "value": "",
+      "width": 0,
+      "height": 0,
+      "x": 18,
+      "y": 115,
+      "visible": true,
+      "sliderMin": 0,
+      "sliderMax": 100,
+      "isDiscrete": true
+    },
+    {
+      "id": "json",
+      "mode": "default",
+      "opcode": "data_variable",
+      "params": {
+        "VARIABLE": "JSON output"
+      },
+      "spriteName": null,
+      "value": "",
+      "width": 0,
+      "height": 0,
+      "x": 18,
+      "y": 155,
+      "visible": true,
+      "sliderMin": 0,
+      "sliderMax": 100,
+      "isDiscrete": true
+    },
+    {
+      "id": "yaml",
+      "mode": "default",
+      "opcode": "data_variable",
+      "params": {
+        "VARIABLE": "YAML output"
+      },
+      "spriteName": null,
+      "value": "",
+      "width": 0,
+      "height": 0,
+      "x": 18,
+      "y": 235,
+      "visible": true,
+      "sliderMin": 0,
+      "sliderMax": 100,
+      "isDiscrete": true
+    }
+  ],
+  "extensions": [],
+  "meta": {
+    "semver": "3.0.0",
+    "vm": "0.2.0",
+    "agent": "TurboWarp Plus minimal samples"
+  }
+}

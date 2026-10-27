@@ -1,0 +1,32 @@
+{
+  "baseURL": "https://kubohiroya.github.io/turbowarp-yaml-json/",
+  "extension": {
+    "id": "kubohiroyayamljson",
+    "bundle": "dist/turbowarp-yaml-json.js",
+    "unsandboxed": false
+  },
+  "samples": [
+    {
+      "name": "yaml-json-roundtrip",
+      "title": "YAML and JSON round trip",
+      "checks": [
+        {
+          "variable": "parsed",
+          "equals": true
+        },
+        {
+          "variable": "json",
+          "jsonEquals": {
+            "name": "TurboWarp",
+            "score": 7
+          }
+        },
+        {
+          "variable": "yaml",
+          "contains": "score: 7"
+        }
+      ],
+      "instructions": "Parse succeeds; JSON and YAML contain name and score 7."
+    }
+  ]
+}

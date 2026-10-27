@@ -6,6 +6,16 @@ English | [日本語](README.ja.md)
 
 A TurboWarp extension for safely parsing YAML/JSON text or building structured data with immutable reporter blocks, then rendering it at the output boundary.
 
+## Runnable sample
+
+[**Open the demo in TurboWarp Editor**](https://turbowarp.org/editor?project_url=https%3A%2F%2Fkubohiroya.github.io%2Fturbowarp-yaml-json%2Fsamples%2Fyaml-json-roundtrip.sb3) · [Download the SB3](https://kubohiroya.github.io/turbowarp-yaml-json/samples/yaml-json-roundtrip.sb3)
+
+Choose **Allow** and click the green flag.
+Parse succeeds; JSON and YAML contain name and score 7.
+
+Editable sources and expected results: [`samples/README.md`](samples/README.md).
+Run `pnpm run samples:build` after source/bundle changes and `pnpm run samples:check` before committing.
+
 ## What it does
 
 - creates string, number, boolean, and null scalar values;
