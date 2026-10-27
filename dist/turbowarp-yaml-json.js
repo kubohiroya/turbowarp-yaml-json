@@ -6352,7 +6352,7 @@ var require_ajv = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	});
 }));
 //#endregion
-//#region node_modules/.pnpm/@kubohiroya+turbowarp-extension-data-editor@0.3.4_react@18.3.1/node_modules/@kubohiroya/turbowarp-extension-data-editor/dist/fixed-input-schema.js
+//#region node_modules/.pnpm/@kubohiroya+turbowarp-extension-data-editor@0.4.0_react@18.3.1/node_modules/@kubohiroya/turbowarp-extension-data-editor/dist/fixed-input-schema.js
 var numberToken = /^-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$/u;
 var invalidNumber = Object.freeze({
 	kind: "invalid",
