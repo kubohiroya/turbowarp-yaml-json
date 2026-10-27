@@ -6,6 +6,15 @@
 
 TurboWarp 上で YAML／JSON 文字列を安全に parse するか、構造化データを immutable な reporter 値として組み立て、最後の出力境界で YAML または JSON 文字列へ render する拡張です。
 
+## 実行できるサンプル
+
+[**TurboWarp Editorでデモを開く**](https://turbowarp.org/editor?project_url=https%3A%2F%2Fkubohiroya.github.io%2Fturbowarp-yaml-json%2Fsamples%2Fyaml-json-roundtrip.sb3) · [SB3をダウンロード](https://kubohiroya.github.io/turbowarp-yaml-json/samples/yaml-json-roundtrip.sb3)
+
+**Allow**で読み込みを許可し、緑の旗を押します。
+`parseText`で小さなYAMLを読み、`renderJson`・`renderYaml`の結果と解析成功を表示。サンプルの元データと期待結果は[`samples/README.md`](samples/README.md)に記載しています。
+
+`pnpm run samples:build`でSB3を再生成し、`pnpm run samples:check`で更新漏れと生成処理を確認します。
+
 ## 概要
 
 - string、number、boolean、null の scalar 値を作れます。
