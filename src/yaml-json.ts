@@ -90,7 +90,7 @@ export const PARSE_LIMITS = {
 export const empty: DataEmpty = {kind: 'empty'};
 
 const SIMPLE_KEY_PATTERN = /^[A-Za-z_][A-Za-z0-9_-]*$/u;
-const ajv = new Ajv({allErrors: true, strict: false});
+let ajv: Ajv | undefined;
 
 export function stringValue(value: string): DataScalar {
   return {kind: 'scalar', value};
@@ -129,8 +129,11 @@ export function concat(left: DataFragment, right: DataFragment): DataFragment {
   return {kind: 'concat', children};
 }
 
-export function renderYaml(fragment: DataFragment): string {
-  return renderYamlValue(toValue(fragment), 0);
+export function renderYaml(
+  fragment: DataFragment,
+  keyOrder: 'preserve' | 'unicode' = 'preserve'
+): string {
+  return renderYamlValue(toValue(fragment), 0, keyOrder);
 }
 
 export function renderJson(fragment: DataFragment): string {
@@ -169,6 +172,7 @@ export function validateWithJsonSchema(
   }
 
   try {
+    ajv ??= new Ajv({allErrors: true, strict: false});
     const validate = ajv.compile(schema as AnySchema);
     if (validate(toValue(fragment))) return {valid: true, errors: []};
     return {valid: false, errors: formatAjvErrors(validate.errors ?? [])};
@@ -180,12 +184,59 @@ export function validateWithJsonSchema(
   }
 }
 
-export function parseData(source: string, format: ParseFormat = 'auto'): ParseResult {
+export function parseData(
+  source: string,
+  format: ParseFormat = 'auto',
+  {jsonObjects = 'legacy-fragment'}: {jsonObjects?: 'legacy-fragment' | 'json'} = {}
+): ParseResult {
   const selectedFormat = resolveFormat(source, format);
   const inputDiagnostic = validateInputSize(source);
   if (inputDiagnostic !== null) return failure(selectedFormat, inputDiagnostic);
 
-  return selectedFormat === 'json' ? parseJson(source) : parseYaml(source);
+  return selectedFormat === 'json' ? parseJson(source, jsonObjects === 'json') : parseYaml(source);
+}
+
+/** Convert only finite, acyclic JSON values through the canonical fragment builder. */
+export function fromValue(
+  value: unknown,
+  {enforceLimits = true}: {enforceLimits?: boolean} = {}
+): DataFragment {
+  const active = new Set<object>();
+  let nodes = 0;
+  const check = (item: unknown, depth: number): void => {
+    if (++nodes > PARSE_LIMITS.maxNodes && enforceLimits)
+      throw new TypeError('Value exceeds the maximum node count.');
+    if (depth > PARSE_LIMITS.maxDepth && enforceLimits)
+      throw new TypeError('Value exceeds the maximum nesting depth.');
+    if (
+      item === null ||
+      typeof item === 'string' ||
+      typeof item === 'boolean' ||
+      (typeof item === 'number' && Number.isFinite(item))
+    )
+      return;
+    if (typeof item !== 'object') throw new TypeError('Value must contain only finite JSON data.');
+    if (active.has(item)) throw new TypeError('Cyclic JSON values are not supported.');
+    if (
+      !Array.isArray(item) &&
+      Object.getPrototypeOf(item) !== Object.prototype &&
+      Object.getPrototypeOf(item) !== null
+    )
+      throw new TypeError('JSON objects must be plain objects.');
+    if (Array.isArray(item))
+      for (let index = 0; index < item.length; index++)
+        if (!Object.hasOwn(item, index)) throw new TypeError('Sparse arrays are not JSON values.');
+    active.add(item);
+    for (const key of Object.keys(item)) {
+      const descriptor = Object.getOwnPropertyDescriptor(item, key)!;
+      if (!Object.hasOwn(descriptor, 'value'))
+        throw new TypeError('JSON properties cannot be accessors.');
+      check(descriptor.value, depth + 1);
+    }
+    active.delete(item);
+  };
+  check(value, 0);
+  return fragmentFromUnknown(value, {nodes: 0, limited: enforceLimits}, 0);
 }
 
 export function formatValidationResult(result: SchemaValidationResult): string {
@@ -224,29 +275,45 @@ function mergeTopLevelValues(children: readonly DataFragment[]): DataValue {
   return values;
 }
 
-function renderYamlValue(value: DataValue, indent: number): string {
+function renderYamlValue(
+  value: DataValue,
+  indent: number,
+  keyOrder: 'preserve' | 'unicode'
+): string {
   if (isPlainObject(value)) {
     const entries = Object.entries(value);
+    if (keyOrder === 'unicode') entries.sort(([a], [b]) => compareKeyCodePoints(a, b));
     if (entries.length === 0) return `${spaces(indent)}{}`;
-    return entries.map(([key, entryValue]) => renderValuePair(key, entryValue, indent)).join('\n');
+    return entries
+      .map(([key, entryValue]) => renderValuePair(key, entryValue, indent, keyOrder))
+      .join('\n');
   }
   if (isDataArray(value)) {
     if (value.length === 0) return `${spaces(indent)}[]`;
-    return value.map((item) => renderSequenceItem(item, indent)).join('\n');
+    return value.map((item) => renderSequenceItem(item, indent, keyOrder)).join('\n');
   }
   return `${spaces(indent)}${renderScalar(value)}`;
 }
 
-function renderValuePair(key: string, value: DataValue, indent: number): string {
+function renderValuePair(
+  key: string,
+  value: DataValue,
+  indent: number,
+  keyOrder: 'preserve' | 'unicode'
+): string {
   const prefix = `${spaces(indent)}${renderKey(key)}:`;
   if (!isPlainObject(value) && !isDataArray(value)) return `${prefix} ${renderScalar(value)}`;
-  return `${prefix}\n${renderYamlValue(value, indent + 2)}`;
+  return `${prefix}\n${renderYamlValue(value, indent + 2, keyOrder)}`;
 }
 
-function renderSequenceItem(item: DataValue, indent: number): string {
+function renderSequenceItem(
+  item: DataValue,
+  indent: number,
+  keyOrder: 'preserve' | 'unicode'
+): string {
   const prefix = `${spaces(indent)}-`;
   if (!isPlainObject(item) && !isDataArray(item)) return `${prefix} ${renderScalar(item)}`;
-  return `${prefix}\n${renderYamlValue(item, indent + 2)}`;
+  return `${prefix}\n${renderYamlValue(item, indent + 2, keyOrder)}`;
 }
 
 function renderKey(key: string): string {
@@ -272,7 +339,7 @@ function formatErrorMessage(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
 
-function parseJson(source: string): ParseResult {
+function parseJson(source: string, nativeJsonObjects = false): ParseResult {
   const errors: JsonParseError[] = [];
   const value = parseJsonText(source, errors, {
     allowEmptyContent: false,
@@ -291,13 +358,18 @@ function parseJson(source: string): ParseResult {
     return {
       success: true,
       format: 'json',
-      fragment: fragmentFromUnknown(value, {nodes: 0}, 0),
+      fragment: fragmentFromUnknown(
+        nativeJsonObjects ? (JSON.parse(source) as unknown) : value,
+        {nodes: 0},
+        0
+      ),
       diagnostic: null
     };
   } catch (error) {
     if (error instanceof ParseLimitError) return failure('json', error.diagnostic);
     return failure('json', {
-      code: 'INVALID_JSON_VALUE',
+      code:
+        nativeJsonObjects && error instanceof SyntaxError ? 'INVALID_JSON' : 'INVALID_JSON_VALUE',
       message: formatErrorMessage(error),
       line: 0,
       column: 0
@@ -351,6 +423,7 @@ function parseYaml(source: string): ParseResult {
 
 interface ParseBudget {
   nodes: number;
+  limited?: boolean;
 }
 
 function fragmentFromUnknown(value: unknown, budget: ParseBudget, depth: number): DataFragment {
@@ -445,7 +518,7 @@ function consumeBudget(
   depth: number,
   position: {line: number; column: number} = {line: 0, column: 0}
 ): void {
-  if (depth > PARSE_LIMITS.maxDepth) {
+  if (budget.limited !== false && depth > PARSE_LIMITS.maxDepth) {
     throw new ParseLimitError({
       code: 'MAX_DEPTH_EXCEEDED',
       message: `Parsed data exceeds the maximum nesting depth of ${PARSE_LIMITS.maxDepth}.`,
@@ -453,7 +526,7 @@ function consumeBudget(
     });
   }
   budget.nodes += 1;
-  if (budget.nodes > PARSE_LIMITS.maxNodes) {
+  if (budget.limited !== false && budget.nodes > PARSE_LIMITS.maxNodes) {
     throw new ParseLimitError({
       code: 'MAX_NODES_EXCEEDED',
       message: `Parsed data exceeds the maximum node count of ${PARSE_LIMITS.maxNodes}.`,
@@ -525,4 +598,14 @@ function isDataArray(value: DataValue): value is readonly DataValue[] {
 
 function spaces(count: number): string {
   return ' '.repeat(count);
+}
+
+function compareKeyCodePoints(left: string, right: string): number {
+  const a = Array.from(left),
+    b = Array.from(right);
+  for (let i = 0; i < Math.min(a.length, b.length); i++) {
+    const difference = a[i]!.codePointAt(0)! - b[i]!.codePointAt(0)!;
+    if (difference) return difference;
+  }
+  return a.length - b.length;
 }

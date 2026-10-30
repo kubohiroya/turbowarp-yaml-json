@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib-codec",
+    "declaration": true,
+    "types": [],
+    "noEmit": false
+  },
+  "include": [
+    "src/codec.ts",
+    "src/schema.ts",
+    "src/source-syntax.ts"
+  ],
+  "exclude": [
+    "tests",
+    "scripts",
+    "node_modules"
+  ]
+}

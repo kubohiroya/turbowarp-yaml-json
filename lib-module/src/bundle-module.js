@@ -453,10 +453,7 @@ var PARSE_LIMITS = {
 };
 var empty = { kind: "empty" };
 var SIMPLE_KEY_PATTERN = /^[A-Za-z_][A-Za-z0-9_-]*$/u;
-var ajv = new Ajv({
-	allErrors: true,
-	strict: false
-});
+var ajv;
 function stringValue(value) {
 	return {
 		kind: "scalar",
@@ -509,8 +506,8 @@ function concat(left, right) {
 		children
 	};
 }
-function renderYaml(fragment) {
-	return renderYamlValue(toValue(fragment), 0);
+function renderYaml(fragment, keyOrder = "preserve") {
+	return renderYamlValue(toValue(fragment), 0, keyOrder);
 }
 function renderJson(fragment) {
 	return `${JSON.stringify(toValue(fragment), null, 2)}\n`;
@@ -536,6 +533,10 @@ function validateWithJsonSchema(schemaJson, fragment) {
 		};
 	}
 	try {
+		ajv ?? (ajv = new Ajv({
+			allErrors: true,
+			strict: false
+		}));
 		const validate = ajv.compile(schema);
 		if (validate(toValue(fragment))) return {
 			valid: true,
@@ -552,11 +553,11 @@ function validateWithJsonSchema(schemaJson, fragment) {
 		};
 	}
 }
-function parseData(source, format = "auto") {
+function parseData(source, format = "auto", { jsonObjects = "legacy-fragment" } = {}) {
 	const selectedFormat = resolveFormat(source, format);
 	const inputDiagnostic = validateInputSize(source);
 	if (inputDiagnostic !== null) return failure(selectedFormat, inputDiagnostic);
-	return selectedFormat === "json" ? parseJson(source) : parseYaml(source);
+	return selectedFormat === "json" ? parseJson(source, jsonObjects === "json") : parseYaml(source);
 }
 function formatValidationResult(result) {
 	return result.valid ? "valid" : result.errors.join("\n");
@@ -588,27 +589,28 @@ function mergeTopLevelValues(children) {
 	if (values.every(isPlainObject)) return Object.assign({}, ...values);
 	return values;
 }
-function renderYamlValue(value, indent) {
+function renderYamlValue(value, indent, keyOrder) {
 	if (isPlainObject(value)) {
 		const entries = Object.entries(value);
+		if (keyOrder === "unicode") entries.sort(([a], [b]) => compareKeyCodePoints(a, b));
 		if (entries.length === 0) return `${spaces(indent)}{}`;
-		return entries.map(([key, entryValue]) => renderValuePair(key, entryValue, indent)).join("\n");
+		return entries.map(([key, entryValue]) => renderValuePair(key, entryValue, indent, keyOrder)).join("\n");
 	}
 	if (isDataArray(value)) {
 		if (value.length === 0) return `${spaces(indent)}[]`;
-		return value.map((item) => renderSequenceItem(item, indent)).join("\n");
+		return value.map((item) => renderSequenceItem(item, indent, keyOrder)).join("\n");
 	}
 	return `${spaces(indent)}${renderScalar(value)}`;
 }
-function renderValuePair(key, value, indent) {
+function renderValuePair(key, value, indent, keyOrder) {
 	const prefix = `${spaces(indent)}${renderKey(key)}:`;
 	if (!isPlainObject(value) && !isDataArray(value)) return `${prefix} ${renderScalar(value)}`;
-	return `${prefix}\n${renderYamlValue(value, indent + 2)}`;
+	return `${prefix}\n${renderYamlValue(value, indent + 2, keyOrder)}`;
 }
-function renderSequenceItem(item, indent) {
+function renderSequenceItem(item, indent, keyOrder) {
 	const prefix = `${spaces(indent)}-`;
 	if (!isPlainObject(item) && !isDataArray(item)) return `${prefix} ${renderScalar(item)}`;
-	return `${prefix}\n${renderYamlValue(item, indent + 2)}`;
+	return `${prefix}\n${renderYamlValue(item, indent + 2, keyOrder)}`;
 }
 function renderKey(key) {
 	return SIMPLE_KEY_PATTERN.test(key) ? key : JSON.stringify(key);
@@ -628,7 +630,7 @@ function formatAjvErrors(errors) {
 function formatErrorMessage(error) {
 	return error instanceof Error ? error.message : String(error);
 }
-function parseJson(source) {
+function parseJson(source, nativeJsonObjects = false) {
 	const errors = [];
 	const value = parse(source, errors, {
 		allowEmptyContent: false,
@@ -645,13 +647,13 @@ function parseJson(source) {
 		return {
 			success: true,
 			format: "json",
-			fragment: fragmentFromUnknown(value, { nodes: 0 }, 0),
+			fragment: fragmentFromUnknown(nativeJsonObjects ? JSON.parse(source) : value, { nodes: 0 }, 0),
 			diagnostic: null
 		};
 	} catch (error) {
 		if (error instanceof ParseLimitError) return failure("json", error.diagnostic);
 		return failure("json", {
-			code: "INVALID_JSON_VALUE",
+			code: nativeJsonObjects && error instanceof SyntaxError ? "INVALID_JSON" : "INVALID_JSON_VALUE",
 			message: formatErrorMessage(error),
 			line: 0,
 			column: 0
@@ -764,13 +766,13 @@ function consumeBudget(budget, depth, position = {
 	line: 0,
 	column: 0
 }) {
-	if (depth > PARSE_LIMITS.maxDepth) throw new ParseLimitError({
+	if (budget.limited !== false && depth > PARSE_LIMITS.maxDepth) throw new ParseLimitError({
 		code: "MAX_DEPTH_EXCEEDED",
 		message: `Parsed data exceeds the maximum nesting depth of ${PARSE_LIMITS.maxDepth}.`,
 		...position
 	});
 	budget.nodes += 1;
-	if (budget.nodes > PARSE_LIMITS.maxNodes) throw new ParseLimitError({
+	if (budget.limited !== false && budget.nodes > PARSE_LIMITS.maxNodes) throw new ParseLimitError({
 		code: "MAX_NODES_EXCEEDED",
 		message: `Parsed data exceeds the maximum node count of ${PARSE_LIMITS.maxNodes}.`,
 		...position
@@ -845,6 +847,14 @@ function isDataArray(value) {
 }
 function spaces(count) {
 	return " ".repeat(count);
+}
+function compareKeyCodePoints(left, right) {
+	const a = Array.from(left), b = Array.from(right);
+	for (let i = 0; i < Math.min(a.length, b.length); i++) {
+		const difference = a[i].codePointAt(0) - b[i].codePointAt(0);
+		if (difference) return difference;
+	}
+	return a.length - b.length;
 }
 var SERIALIZED_PREFIX = "turbowarp-yaml-json:v1:";
 var blockDefinitions = block_definitions_default.blocks;

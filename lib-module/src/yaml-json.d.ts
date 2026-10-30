@@ -65,10 +65,16 @@ export declare function pair(key: string, value: DataFragment | string): DataPai
 export declare function map(entries: DataFragment | string): DataMap;
 export declare function sequence(items: DataFragment | string): DataSequence;
 export declare function concat(left: DataFragment, right: DataFragment): DataFragment;
-export declare function renderYaml(fragment: DataFragment): string;
+export declare function renderYaml(fragment: DataFragment, keyOrder?: 'preserve' | 'unicode'): string;
 export declare function renderJson(fragment: DataFragment): string;
 export declare function toValue(fragment: DataFragment): DataValue;
 export declare function validateWithJsonSchema(schemaJson: string, fragment: DataFragment): SchemaValidationResult;
-export declare function parseData(source: string, format?: ParseFormat): ParseResult;
+export declare function parseData(source: string, format?: ParseFormat, { jsonObjects }?: {
+    jsonObjects?: 'legacy-fragment' | 'json';
+}): ParseResult;
+/** Convert only finite, acyclic JSON values through the canonical fragment builder. */
+export declare function fromValue(value: unknown, { enforceLimits }?: {
+    enforceLimits?: boolean;
+}): DataFragment;
 export declare function formatValidationResult(result: SchemaValidationResult): string;
 export declare function normalizeContent(content: DataFragment | string): DataFragment;
