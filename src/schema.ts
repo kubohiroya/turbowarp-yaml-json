@@ -1,0 +1,56 @@
+import Ajv, {type AnySchema, type ValidateFunction} from 'ajv';
+import Ajv2020 from 'ajv/dist/2020.js';
+import {fromValue, toValue, type SchemaValidationResult} from './yaml-json.js';
+export type {SchemaValidationResult} from './yaml-json.js';
+export type SchemaDialect = 'draft-07' | '2020-12';
+const profiles = {
+  'draft-07': new Ajv({allErrors: true, strict: false, addUsedSchema: false}),
+  '2020-12': new Ajv2020({allErrors: true, strict: false, addUsedSchema: false})
+};
+const compiled = {
+  'draft-07': new Map<string, {document: AnySchema; validate: ValidateFunction}>(),
+  '2020-12': new Map<string, {document: AnySchema; validate: ValidateFunction}>()
+};
+const maxCompiledSchemas = 32;
+/** Full JSON Schema profiles for source owners; unrelated to structured-data's runtime subset. */
+export function validateValueWithJsonSchema(
+  schema: unknown,
+  value: unknown,
+  {dialect = 'draft-07'}: {dialect?: SchemaDialect} = {}
+): SchemaValidationResult {
+  try {
+    if (!Object.hasOwn(profiles, dialect)) throw new TypeError('Unsupported JSON Schema dialect.');
+    const document = toValue(fromValue(schema));
+    const candidate = toValue(fromValue(value));
+    const key = JSON.stringify(document),
+      cache = compiled[dialect];
+    let entry = cache.get(key);
+    if (!entry) {
+      entry = {
+        document: document as AnySchema,
+        validate: profiles[dialect].compile(document as AnySchema)
+      };
+      cache.set(key, entry);
+      if (cache.size > maxCompiledSchemas) {
+        const oldest = cache.keys().next().value!;
+        profiles[dialect].removeSchema(cache.get(oldest)!.document);
+        cache.delete(oldest);
+      }
+    }
+    const {validate} = entry;
+    if (validate(candidate)) return {valid: true, errors: []};
+    return {
+      valid: false,
+      errors: (validate.errors ?? []).map(
+        (error) => `${error.instancePath || '/'} ${error.message ?? 'is invalid'}`
+      )
+    };
+  } catch (error) {
+    return {
+      valid: false,
+      errors: [
+        `Invalid JSON Schema or value: ${error instanceof Error ? error.message : String(error)}`
+      ]
+    };
+  }
+}

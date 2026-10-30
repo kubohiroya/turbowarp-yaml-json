@@ -1,6 +1,6 @@
 {
   "name": "@kubohiroya/turbowarp-yaml-json",
-  "version": "0.7.0",
+  "version": "0.8.0-rc.0",
   "description": "A safe YAML/JSON parser and immutable data builder extension for TurboWarp.",
   "author": {
     "name": "Hiroya Kubo",
@@ -38,7 +38,8 @@
     "LICENSE",
     "schemas/",
     "lib-module/",
-    "assets/block-icon.svg"
+    "assets/block-icon.svg",
+    "lib-codec/"
   ],
   "exports": {
     ".": "./src/yaml-json.ts",
@@ -46,11 +47,24 @@
     "./bundle-module": {
       "types": "./lib-module/src/bundle-module.d.ts",
       "import": "./lib-module/src/bundle-module.js"
+    },
+    "./codec": {
+      "types": "./lib-codec/codec.d.ts",
+      "import": "./lib-codec/codec.js"
+    },
+    "./schema": {
+      "types": "./lib-codec/schema.d.ts",
+      "import": "./lib-codec/schema.js"
+    },
+    "./source-syntax": {
+      "types": "./lib-codec/source-syntax.d.ts",
+      "import": "./lib-codec/source-syntax.js"
     }
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "tag": "next"
   },
   "packageManager": "pnpm@11.28.8",
   "engines": {
@@ -59,7 +73,7 @@
   "scripts": {
     "dev": "vite build --watch",
     "typecheck": "tsc --noEmit",
-    "build": "vite build && pnpm run build:module",
+    "build": "vite build && pnpm run build:module && pnpm run build:codec",
     "lint": "eslint src tests vite.config.ts vite.module.config.ts",
     "format": "prettier --write src/block-definitions.json src/config.ts src/extension.ts src/yaml-json.ts tests/extension.test.ts tests/yaml-json.test.ts package.json",
     "format:check": "prettier --check src/block-definitions.json src/config.ts src/extension.ts src/yaml-json.ts tests/extension.test.ts tests/yaml-json.test.ts package.json",
@@ -76,7 +90,8 @@
     "check:module": "node scripts/check-bundle-module.ts",
     "samples:build": "node scripts/build-samples.mjs",
     "samples:check": "node scripts/build-samples.mjs --check && node --test scripts/verify-samples.mjs",
-    "pages:build": "node scripts/prepare-pages.mjs"
+    "pages:build": "node scripts/prepare-pages.mjs",
+    "build:codec": "tsc -p tsconfig.codec.json"
   },
   "dependencies": {
     "ajv": "^8.17.1",
@@ -96,11 +111,5 @@
     "vite": "^8.2.2",
     "vitest": "^4.1.10",
     "@kubohiroya/turbowarp-extension-data-editor": "^0.5.0"
-  },
-  "gitHead": "5d925b15c74edee453876e68a7d79334b1118c4e",
-  "x-turbowarp-source": {
-    "revision": "5d925b15c74edee453876e68a7d79334b1118c4e",
-    "revisionRole": "base-commit",
-    "sourceState": "local-release-overlay"
   }
 }

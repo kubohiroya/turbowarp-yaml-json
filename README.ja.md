@@ -90,3 +90,5 @@ pnpm run check
 SPDX-License-Identifier: MPL-2.0
 
 固定入力の編集範囲・互換性・切戻しについては [固定入力の編集](docs/fixed-input-editors.ja.md) を参照してください。
+
+文書原文を保持したまま他のパッケージから変換する場合は [共通 codec / Schema API](docs/document-codec.ja.md) を参照してください。
