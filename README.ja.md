@@ -92,3 +92,7 @@ SPDX-License-Identifier: MPL-2.0
 固定入力の編集範囲・互換性・切戻しについては [固定入力の編集](docs/fixed-input-editors.ja.md) を参照してください。
 
 文書原文を保持したまま他のパッケージから変換する場合は [共通 codec / Schema API](docs/document-codec.ja.md) を参照してください。
+
+## YAMLブロックによる文書表現
+
+`/yaml-blocks`・`/source-view`・`/runtime` から汎用YAMLブロック定義、コメントを保持する原文との変換、実行処理を持たない補助runtimeを提供します。document-sourceの共通契約を利用し、document-dataへ依存しません。作品の保存と差分適用はdocument-dataが担当します。runtimeのenabled指定は起動時固定・既定OFFです。

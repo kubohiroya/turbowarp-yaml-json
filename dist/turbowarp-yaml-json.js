@@ -61,7 +61,7 @@ var extensionConfig = {
 	blockIconURI: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHJlY3QgeD0iNiIgeT0iOCIgd2lkdGg9IjM2IiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iI0E0NTUyQiIvPjxwYXRoIGQ9Ik0xOSAxN2MtMy44NSAwLTIuNzUgMy41LTUuNSA3YzIuNzUgMy41IDIuNzUgMy41IDUuNSA3IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGNpcmNsZSBjeD0iMjMuNSIgY3k9IjIxIiByPSIxLjciIGZpbGw9IiNmZmZmZmYiLz48cGF0aCBkPSJNMjggMjFoOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGNpcmNsZSBjeD0iMjMuNSIgY3k9IjI3IiByPSIxLjciIGZpbGw9IiNmZmZmZmYiLz48cGF0aCBkPSJNMjggMjdoNS41IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMi44IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4="
 };
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/code.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/code.js
 var require_code$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.regexpCode = exports.getEsmExportName = exports.getProperty = exports.safeStringify = exports.stringify = exports.strConcat = exports.addCodeArg = exports.str = exports._ = exports.nil = exports._Code = exports.Name = exports.IDENTIFIER = exports._CodeOrName = void 0;
@@ -196,7 +196,7 @@ var require_code$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.regexpCode = regexpCode;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/scope.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/scope.js
 var require_scope = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.ValueScope = exports.ValueScopeName = exports.Scope = exports.varKinds = exports.UsedValueState = void 0;
@@ -333,7 +333,7 @@ var require_scope = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.ValueScope = ValueScope;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/index.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/codegen/index.js
 var require_codegen = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.or = exports.and = exports.not = exports.CodeGen = exports.operators = exports.varKinds = exports.ValueScopeName = exports.ValueScope = exports.Scope = exports.Name = exports.regexpCode = exports.stringify = exports.getProperty = exports.nil = exports.strConcat = exports.str = exports._ = void 0;
@@ -1002,7 +1002,7 @@ var require_codegen = /* @__PURE__ */ __commonJSMin(((exports) => {
 	}
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/util.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/util.js
 var require_util = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.checkStrictMode = exports.getErrorPath = exports.Type = exports.useFunc = exports.setEvaluated = exports.evaluatedPropsToName = exports.mergeEvaluated = exports.eachItem = exports.unescapeJsonPointer = exports.escapeJsonPointer = exports.escapeFragment = exports.unescapeFragment = exports.schemaRefOrVal = exports.schemaHasRulesButRef = exports.schemaHasRules = exports.checkUnknownRules = exports.alwaysValidSchema = exports.toHash = void 0;
@@ -1143,7 +1143,7 @@ var require_util = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.checkStrictMode = checkStrictMode;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/names.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/names.js
 var require_names = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -1167,7 +1167,7 @@ var require_names = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/errors.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/errors.js
 var require_errors = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.extendErrors = exports.resetErrorsCount = exports.reportExtraError = exports.reportError = exports.keyword$DataError = exports.keywordError = void 0;
@@ -1263,7 +1263,7 @@ var require_errors = /* @__PURE__ */ __commonJSMin(((exports) => {
 	}
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/boolSchema.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/boolSchema.js
 var require_boolSchema = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.boolOrEmptySchema = exports.topBoolOrEmptySchema = void 0;
@@ -1305,7 +1305,7 @@ var require_boolSchema = /* @__PURE__ */ __commonJSMin(((exports) => {
 	}
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/rules.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/rules.js
 var require_rules = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.getRules = exports.isJSONType = void 0;
@@ -1363,7 +1363,7 @@ var require_rules = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.getRules = getRules;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/applicability.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/applicability.js
 var require_applicability = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.shouldUseRule = exports.shouldUseGroup = exports.schemaHasRulesForType = void 0;
@@ -1383,7 +1383,7 @@ var require_applicability = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.shouldUseRule = shouldUseRule;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/dataType.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/dataType.js
 var require_dataType = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.reportTypeError = exports.checkDataTypes = exports.checkDataType = exports.coerceAndCheckDataType = exports.getJSONTypes = exports.getSchemaTypes = exports.DataType = void 0;
@@ -1547,7 +1547,7 @@ var require_dataType = /* @__PURE__ */ __commonJSMin(((exports) => {
 	}
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/defaults.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/defaults.js
 var require_defaults = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.assignDefaults = void 0;
@@ -1573,7 +1573,7 @@ var require_defaults = /* @__PURE__ */ __commonJSMin(((exports) => {
 	}
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/code.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/code.js
 var require_code = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.validateUnion = exports.validateArray = exports.usePattern = exports.callValidateCode = exports.schemaProperties = exports.allSchemaProperties = exports.noPropertyInData = exports.propertyInData = exports.isOwnProperty = exports.hasPropFunc = exports.reportMissingProp = exports.checkMissingProp = exports.checkReportMissingProp = void 0;
@@ -1697,7 +1697,7 @@ var require_code = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.validateUnion = validateUnion;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/keyword.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/keyword.js
 var require_keyword = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.validateKeywordUsage = exports.validSchemaType = exports.funcKeywordCode = exports.macroKeywordCode = void 0;
@@ -1803,7 +1803,7 @@ var require_keyword = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.validateKeywordUsage = validateKeywordUsage;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/subschema.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/subschema.js
 var require_subschema = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.extendSubschemaMode = exports.extendSubschemaData = exports.getSubschema = void 0;
@@ -1870,7 +1870,7 @@ var require_subschema = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.extendSubschemaMode = extendSubschemaMode;
 }));
 //#endregion
-//#region node_modules/.pnpm/fast-deep-equal@3.1.3/node_modules/fast-deep-equal/index.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/fast-deep-equal@3.1.3/node_modules/fast-deep-equal/index.js
 var require_fast_deep_equal = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports = function equal(a, b) {
 		if (a === b) return true;
@@ -1900,7 +1900,7 @@ var require_fast_deep_equal = /* @__PURE__ */ __commonJSMin(((exports, module) =
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/json-schema-traverse@1.0.0/node_modules/json-schema-traverse/index.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/json-schema-traverse@1.0.0/node_modules/json-schema-traverse/index.js
 var require_json_schema_traverse = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var traverse = module.exports = function(schema, opts, cb) {
 		if (typeof opts == "function") {
@@ -1975,7 +1975,7 @@ var require_json_schema_traverse = /* @__PURE__ */ __commonJSMin(((exports, modu
 	}
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/resolve.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/resolve.js
 var require_resolve = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.getSchemaRefs = exports.resolveUrl = exports.normalizeId = exports._getFullPath = exports.getFullPath = exports.inlineRef = void 0;
@@ -2104,7 +2104,7 @@ var require_resolve = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.getSchemaRefs = getSchemaRefs;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/index.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/validate/index.js
 var require_validate = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.getData = exports.KeywordCxt = exports.validateFunctionCode = void 0;
@@ -2523,7 +2523,7 @@ var require_validate = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.getData = getData;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/validation_error.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/validation_error.js
 var require_validation_error = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var ValidationError = class extends Error {
@@ -2536,7 +2536,7 @@ var require_validation_error = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.default = ValidationError;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/ref_error.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/ref_error.js
 var require_ref_error = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var resolve_1 = require_resolve();
@@ -2550,7 +2550,7 @@ var require_ref_error = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.default = MissingRefError;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/index.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/compile/index.js
 var require_compile = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.resolveSchema = exports.getCompilingSchema = exports.resolveRef = exports.compileSchema = exports.SchemaEnv = void 0;
@@ -2764,7 +2764,7 @@ var require_compile = /* @__PURE__ */ __commonJSMin(((exports) => {
 	}
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/data.json
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/data.json
 var data_exports = /* @__PURE__ */ __exportAll({
 	$id: () => $id$2,
 	additionalProperties: () => false,
@@ -2793,7 +2793,7 @@ var init_data = __esmMin((() => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/fast-uri@3.1.6/node_modules/fast-uri/lib/utils.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/fast-uri@3.1.6/node_modules/fast-uri/lib/utils.js
 var require_utils = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	/** @type {(value: string) => boolean} */
 	var isUUID = RegExp.prototype.test.bind(/^[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}$/iu);
@@ -3393,7 +3393,7 @@ var require_utils = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/fast-uri@3.1.6/node_modules/fast-uri/lib/schemes.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/fast-uri@3.1.6/node_modules/fast-uri/lib/schemes.js
 var require_schemes = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var { isUUID } = require_utils();
 	var URN_REG = /^([\da-z][\d\-a-z]{0,31}):((?:[\w!$'()*+,\-./:;=@]|%[\da-f]{2})+)$/iu;
@@ -3577,7 +3577,7 @@ var require_schemes = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/fast-uri@3.1.6/node_modules/fast-uri/index.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/fast-uri@3.1.6/node_modules/fast-uri/index.js
 var require_fast_uri = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	var { normalizeIPv6, removeDotSegments, recomposeAuthority, normalizePercentEncoding, normalizePathEncoding, serializePathEncoding, normalizeQueryFragmentEncoding, encodeQuery, encodeFragment, reescapeHostDelimiters, isIPv4, nonSimpleDomain } = require_utils();
 	var { SCHEMES, getSchemeHandler } = require_schemes();
@@ -3971,7 +3971,7 @@ var require_fast_uri = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	module.exports.fastUri = fastUri;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/uri.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/uri.js
 var require_uri = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var uri = require_fast_uri();
@@ -3979,7 +3979,7 @@ var require_uri = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.default = uri;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/core.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/core.js
 var require_core$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.CodeGen = exports.Name = exports.nil = exports.stringify = exports.str = exports._ = exports.KeywordCxt = void 0;
@@ -4548,7 +4548,7 @@ var require_core$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	}
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/id.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/id.js
 var require_id = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = {
@@ -4559,7 +4559,7 @@ var require_id = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/ref.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/ref.js
 var require_ref = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.callRef = exports.getValidate = void 0;
@@ -4666,7 +4666,7 @@ var require_ref = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.default = def;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/index.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/core/index.js
 var require_core = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var id_1 = require_id();
@@ -4683,7 +4683,7 @@ var require_core = /* @__PURE__ */ __commonJSMin(((exports) => {
 	];
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitNumber.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitNumber.js
 var require_limitNumber = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -4726,7 +4726,7 @@ var require_limitNumber = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/multipleOf.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/multipleOf.js
 var require_multipleOf = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -4749,7 +4749,7 @@ var require_multipleOf = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/ucs2length.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/ucs2length.js
 var require_ucs2length = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	function ucs2length(str) {
@@ -4771,7 +4771,7 @@ var require_ucs2length = /* @__PURE__ */ __commonJSMin(((exports) => {
 	ucs2length.code = "require(\"ajv/dist/runtime/ucs2length\").default";
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitLength.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitLength.js
 var require_limitLength = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -4798,7 +4798,7 @@ var require_limitLength = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/pattern.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/pattern.js
 var require_pattern = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var code_1 = require_code();
@@ -4830,7 +4830,7 @@ var require_pattern = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitProperties.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitProperties.js
 var require_limitProperties = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -4854,7 +4854,7 @@ var require_limitProperties = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/required.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/required.js
 var require_required = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var code_1 = require_code();
@@ -4920,7 +4920,7 @@ var require_required = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitItems.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/limitItems.js
 var require_limitItems = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -4944,7 +4944,7 @@ var require_limitItems = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/equal.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/runtime/equal.js
 var require_equal = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var equal = require_fast_deep_equal();
@@ -4952,7 +4952,7 @@ var require_equal = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.default = equal;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/uniqueItems.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/uniqueItems.js
 var require_uniqueItems = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var dataType_1 = require_dataType();
@@ -5015,7 +5015,7 @@ var require_uniqueItems = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/const.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/const.js
 var require_const = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -5036,7 +5036,7 @@ var require_const = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/enum.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/enum.js
 var require_enum = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -5079,7 +5079,7 @@ var require_enum = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/index.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/validation/index.js
 var require_validation = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var limitNumber_1 = require_limitNumber();
@@ -5114,7 +5114,7 @@ var require_validation = /* @__PURE__ */ __commonJSMin(((exports) => {
 	];
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/additionalItems.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/additionalItems.js
 var require_additionalItems = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.validateAdditionalItems = void 0;
@@ -5166,7 +5166,7 @@ var require_additionalItems = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.default = def;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/items.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/items.js
 var require_items = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.validateTuple = void 0;
@@ -5219,7 +5219,7 @@ var require_items = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.default = def;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/prefixItems.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/prefixItems.js
 var require_prefixItems = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var items_1 = require_items();
@@ -5232,7 +5232,7 @@ var require_prefixItems = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/items2020.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/items2020.js
 var require_items2020 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -5259,7 +5259,7 @@ var require_items2020 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/contains.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/contains.js
 var require_contains = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -5343,7 +5343,7 @@ var require_contains = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/dependencies.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/dependencies.js
 var require_dependencies = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.validateSchemaDeps = exports.validatePropertyDeps = exports.error = void 0;
@@ -5424,7 +5424,7 @@ var require_dependencies = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.default = def;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/propertyNames.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/propertyNames.js
 var require_propertyNames = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -5460,7 +5460,7 @@ var require_propertyNames = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/additionalProperties.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/additionalProperties.js
 var require_additionalProperties = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var code_1 = require_code();
@@ -5549,7 +5549,7 @@ var require_additionalProperties = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/properties.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/properties.js
 var require_properties = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var validate_1 = require_validate();
@@ -5594,7 +5594,7 @@ var require_properties = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/patternProperties.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/patternProperties.js
 var require_patternProperties = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var code_1 = require_code();
@@ -5649,7 +5649,7 @@ var require_patternProperties = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/not.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/not.js
 var require_not = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var util_1 = require_util();
@@ -5676,7 +5676,7 @@ var require_not = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/anyOf.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/anyOf.js
 var require_anyOf = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = {
@@ -5688,7 +5688,7 @@ var require_anyOf = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/oneOf.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/oneOf.js
 var require_oneOf = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -5734,7 +5734,7 @@ var require_oneOf = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/allOf.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/allOf.js
 var require_allOf = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var util_1 = require_util();
@@ -5759,7 +5759,7 @@ var require_allOf = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/if.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/if.js
 var require_if = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -5816,7 +5816,7 @@ var require_if = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.default = def;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/thenElse.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/thenElse.js
 var require_thenElse = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var util_1 = require_util();
@@ -5829,7 +5829,7 @@ var require_thenElse = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/index.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/applicator/index.js
 var require_applicator = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var additionalItems_1 = require_additionalItems();
@@ -5870,7 +5870,7 @@ var require_applicator = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.default = getApplicator;
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/format/format.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/format/format.js
 var require_format$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -5958,13 +5958,13 @@ var require_format$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/format/index.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/format/index.js
 var require_format = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = [require_format$1().default];
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/metadata.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/metadata.js
 var require_metadata = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.contentVocabulary = exports.metadataVocabulary = void 0;
@@ -5984,7 +5984,7 @@ var require_metadata = /* @__PURE__ */ __commonJSMin(((exports) => {
 	];
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/draft7.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/draft7.js
 var require_draft7 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var core_1 = require_core();
@@ -6002,7 +6002,7 @@ var require_draft7 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	];
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/discriminator/types.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/discriminator/types.js
 var require_types = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.DiscrError = void 0;
@@ -6013,7 +6013,7 @@ var require_types = /* @__PURE__ */ __commonJSMin(((exports) => {
 	})(DiscrError || (exports.DiscrError = DiscrError = {}));
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/discriminator/index.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/vocabularies/discriminator/index.js
 var require_discriminator = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var codegen_1 = require_codegen();
@@ -6106,7 +6106,7 @@ var require_discriminator = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-draft-07.json
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/refs/json-schema-draft-07.json
 var json_schema_draft_07_exports = /* @__PURE__ */ __exportAll({
 	$id: () => $id$1,
 	$schema: () => $schema$1,
@@ -6260,7 +6260,7 @@ var init_json_schema_draft_07 = __esmMin((() => {
 	};
 }));
 //#endregion
-//#region node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/ajv.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/ajv@8.20.0/node_modules/ajv/dist/ajv.js
 var require_ajv = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.MissingRefError = exports.ValidationError = exports.CodeGen = exports.Name = exports.nil = exports.stringify = exports.str = exports._ = exports.KeywordCxt = exports.Ajv = void 0;
@@ -6352,7 +6352,7 @@ var require_ajv = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	});
 }));
 //#endregion
-//#region node_modules/.pnpm/@kubohiroya+turbowarp-extension-data-editor@0.5.0_react@18.3.1/node_modules/@kubohiroya/turbowarp-extension-data-editor/dist/fixed-input-schema.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/@kubohiroya+turbowarp-extension-data-editor@0.5.0_react@18.3.1/node_modules/@kubohiroya/turbowarp-extension-data-editor/dist/fixed-input-schema.js
 var numberToken = /^-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$/u;
 var invalidNumber = Object.freeze({
 	kind: "invalid",
@@ -6791,7 +6791,7 @@ var block_definitions_default = {
 	]
 };
 //#endregion
-//#region node_modules/.pnpm/jsonc-parser@3.3.1/node_modules/jsonc-parser/lib/esm/impl/scanner.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/jsonc-parser@3.3.1/node_modules/jsonc-parser/lib/esm/impl/scanner.js
 var import_ajv = /* @__PURE__ */ __toESM(require_ajv(), 1);
 /**
 * Creates a JSON scanner on the given text.
@@ -7189,7 +7189,7 @@ new Array(maxCachedValues).fill(0).map((_, index) => {
 	return "\r\n" + "	".repeat(index);
 });
 //#endregion
-//#region node_modules/.pnpm/jsonc-parser@3.3.1/node_modules/jsonc-parser/lib/esm/impl/parser.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/jsonc-parser@3.3.1/node_modules/jsonc-parser/lib/esm/impl/parser.js
 var ParseOptions;
 (function(ParseOptions) {
 	ParseOptions.DEFAULT = { allowTrailingComma: false };
@@ -7436,7 +7436,7 @@ function visit$2(text, visitor, options = ParseOptions.DEFAULT) {
 	return true;
 }
 //#endregion
-//#region node_modules/.pnpm/jsonc-parser@3.3.1/node_modules/jsonc-parser/lib/esm/main.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/jsonc-parser@3.3.1/node_modules/jsonc-parser/lib/esm/main.js
 var ScanError;
 (function(ScanError) {
 	ScanError[ScanError["None"] = 0] = "None";
@@ -7513,7 +7513,7 @@ function printParseErrorCode(code) {
 	return "<unknown ParseErrorCode>";
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/identity.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/identity.js
 var ALIAS = Symbol.for("yaml.alias");
 var DOC = Symbol.for("yaml.document");
 var MAP = Symbol.for("yaml.map");
@@ -7545,7 +7545,7 @@ function isNode(node) {
 }
 var hasAnchor = (node) => (isScalar(node) || isCollection(node)) && !!node.anchor;
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/visit.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/visit.js
 var BREAK$1 = Symbol("break visit");
 var SKIP$1 = Symbol("skip children");
 var REMOVE$1 = Symbol("remove node");
@@ -7731,7 +7731,7 @@ function replaceNode(key, path, node) {
 	}
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/doc/directives.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/doc/directives.js
 var escapeChars = {
 	"!": "%21",
 	",": "%2C",
@@ -7890,7 +7890,7 @@ Directives.defaultYaml = {
 };
 Directives.defaultTags = { "!!": "tag:yaml.org,2002:" };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/doc/anchors.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/doc/anchors.js
 /**
 * Verify that the input string is a valid anchor.
 *
@@ -7949,7 +7949,7 @@ function createNodeAnchors(doc, prefix) {
 	};
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/doc/applyReviver.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/doc/applyReviver.js
 /**
 * Applies the JSON.parse reviver algorithm as defined in the ECMA-262 spec,
 * in section 24.5.1.1 "Runtime Semantics: InternalizeJSONProperty" of the
@@ -7988,7 +7988,7 @@ function applyReviver(reviver, obj, key, val) {
 	return reviver.call(obj, key, val);
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/toJS.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/toJS.js
 /**
 * Recursively convert any node or its contents to native JavaScript
 *
@@ -8021,7 +8021,7 @@ function toJS(value, arg, ctx) {
 	return value;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/Node.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/Node.js
 var NodeBase = class {
 	constructor(type) {
 		Object.defineProperty(this, NODE_TYPE, { value: type });
@@ -8049,7 +8049,7 @@ var NodeBase = class {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/Alias.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/Alias.js
 var Alias = class extends NodeBase {
 	constructor(source) {
 		super(ALIAS);
@@ -8137,7 +8137,7 @@ function getAliasCount(doc, node, anchors) {
 	return 1;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/Scalar.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/Scalar.js
 var isScalarValue$1 = (value) => !value || typeof value !== "function" && typeof value !== "object";
 var Scalar = class extends NodeBase {
 	constructor(value) {
@@ -8157,7 +8157,7 @@ Scalar.PLAIN = "PLAIN";
 Scalar.QUOTE_DOUBLE = "QUOTE_DOUBLE";
 Scalar.QUOTE_SINGLE = "QUOTE_SINGLE";
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/doc/createNode.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/doc/createNode.js
 var defaultTagPrefix = "tag:yaml.org,2002:";
 function findTagObject(value, tagName, tags) {
 	if (tagName) {
@@ -8214,7 +8214,7 @@ function createNode(value, tagName, ctx) {
 	return node;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/Collection.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/Collection.js
 function collectionFromPath(schema, path, value) {
 	let v = value;
 	for (let i = path.length - 1; i >= 0; --i) {
@@ -8327,7 +8327,7 @@ var Collection = class extends NodeBase {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringifyComment.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringifyComment.js
 /**
 * Stringifies a comment.
 *
@@ -8342,7 +8342,7 @@ function indentComment(comment, indent) {
 }
 var lineComment = (str, indent, comment) => str.endsWith("\n") ? indentComment(comment, indent) : comment.includes("\n") ? "\n" + indentComment(comment, indent) : (str.endsWith(" ") ? "" : " ") + comment;
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/foldFlowLines.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/foldFlowLines.js
 var FOLD_FLOW = "flow";
 var FOLD_BLOCK = "block";
 var FOLD_QUOTED = "quoted";
@@ -8456,7 +8456,7 @@ function consumeMoreIndentedLines(text, i, indent) {
 	return end;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringifyString.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringifyString.js
 var getFoldOptions = (ctx, isBlock) => ({
 	indentAtStart: isBlock ? ctx.indent.length : ctx.indentAtStart,
 	lineWidth: ctx.options.lineWidth,
@@ -8675,7 +8675,7 @@ function stringifyString(item, ctx, onComment, onChompKeep) {
 	return res;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringify.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringify.js
 function createStringifyContext(doc, options) {
 	const opt = Object.assign({
 		blockQuote: true,
@@ -8775,7 +8775,7 @@ function stringify(item, ctx, onComment, onChompKeep) {
 	return isScalar(node) || str[0] === "{" || str[0] === "[" ? `${props} ${str}` : `${props}\n${ctx.indent}${str}`;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringifyPair.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringifyPair.js
 function stringifyPair({ key, value }, ctx, onComment, onChompKeep) {
 	const { allNullValues, doc, indent, indentStep, options: { commentString, indentSeq, simpleKeys } } = ctx;
 	let keyComment = isNode(key) && key.comment || null;
@@ -8865,12 +8865,12 @@ function stringifyPair({ key, value }, ctx, onComment, onChompKeep) {
 	return str;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/log.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/log.js
 function warn(logLevel, warning) {
 	if (logLevel === "debug" || logLevel === "warn") console.warn(warning);
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/merge.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/merge.js
 var MERGE_KEY = "<<";
 var merge = {
 	identify: (value) => value === MERGE_KEY || typeof value === "symbol" && value.description === MERGE_KEY,
@@ -8906,7 +8906,7 @@ function resolveAliasValue(ctx, value) {
 	return ctx && isAlias(value) ? value.resolve(ctx.doc, ctx) : value;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/addPairToJSMap.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/addPairToJSMap.js
 function addPairToJSMap(ctx, map, { key, value }) {
 	if (isNode(key) && key.addToJSMap) key.addToJSMap(ctx, map, value);
 	else if (isMergeKey(ctx, key)) addMergeToJSMap(ctx, map, value);
@@ -8949,7 +8949,7 @@ function stringifyKey(key, jsKey, ctx) {
 	return JSON.stringify(jsKey);
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/Pair.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/Pair.js
 function createPair(key, value, ctx) {
 	return new Pair(createNode(key, void 0, ctx), createNode(value, void 0, ctx));
 }
@@ -8973,7 +8973,7 @@ var Pair = class Pair {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringifyCollection.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringifyCollection.js
 function stringifyCollection(collection, ctx, options) {
 	return (ctx.inFlow ?? collection.flow ? stringifyFlowCollection : stringifyBlockCollection)(collection, ctx, options);
 }
@@ -9085,7 +9085,7 @@ function addCommentBefore({ indent, options: { commentString } }, lines, comment
 	}
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/YAMLMap.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/YAMLMap.js
 function findPair(items, key) {
 	const k = isScalar(key) ? key.value : key;
 	for (const it of items) if (isPair(it)) {
@@ -9184,7 +9184,7 @@ var YAMLMap = class extends Collection {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/common/map.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/common/map.js
 var map$1 = {
 	collection: "map",
 	default: true,
@@ -9197,7 +9197,7 @@ var map$1 = {
 	createNode: (schema, obj, ctx) => YAMLMap.from(schema, obj, ctx)
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/YAMLSeq.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/nodes/YAMLSeq.js
 var YAMLSeq = class extends Collection {
 	static get tagName() {
 		return "tag:yaml.org,2002:seq";
@@ -9294,7 +9294,7 @@ function asItemIndex(key) {
 	return typeof idx === "number" && Number.isInteger(idx) && idx >= 0 ? idx : null;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/common/seq.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/common/seq.js
 var seq = {
 	collection: "seq",
 	default: true,
@@ -9307,7 +9307,7 @@ var seq = {
 	createNode: (schema, obj, ctx) => YAMLSeq.from(schema, obj, ctx)
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/common/string.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/common/string.js
 var string = {
 	identify: (value) => typeof value === "string",
 	default: true,
@@ -9319,7 +9319,7 @@ var string = {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/common/null.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/common/null.js
 var nullTag = {
 	identify: (value) => value == null,
 	createNode: () => new Scalar(null),
@@ -9330,7 +9330,7 @@ var nullTag = {
 	stringify: ({ source }, ctx) => typeof source === "string" && nullTag.test.test(source) ? source : ctx.options.nullStr
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/core/bool.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/core/bool.js
 var boolTag = {
 	identify: (value) => typeof value === "boolean",
 	default: true,
@@ -9345,7 +9345,7 @@ var boolTag = {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringifyNumber.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringifyNumber.js
 function stringifyNumber({ format, minFractionDigits, tag, value }) {
 	if (typeof value === "bigint") return String(value);
 	const num = typeof value === "number" ? value : Number(value);
@@ -9363,7 +9363,7 @@ function stringifyNumber({ format, minFractionDigits, tag, value }) {
 	return n;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/core/float.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/core/float.js
 var floatNaN$1 = {
 	identify: (value) => typeof value === "number",
 	default: true,
@@ -9398,7 +9398,7 @@ var float$1 = {
 	stringify: stringifyNumber
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/core/int.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/core/int.js
 var intIdentify$2 = (value) => typeof value === "bigint" || Number.isInteger(value);
 var intResolve$1 = (str, offset, radix, { intAsBigInt }) => intAsBigInt ? BigInt(str) : parseInt(str.substring(offset), radix);
 function intStringify$1(node, radix, prefix) {
@@ -9433,7 +9433,7 @@ var intHex$1 = {
 	stringify: (node) => intStringify$1(node, 16, "0x")
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/core/schema.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/core/schema.js
 var schema$2 = [
 	map$1,
 	seq,
@@ -9448,7 +9448,7 @@ var schema$2 = [
 	float$1
 ];
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/json/schema.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/json/schema.js
 function intIdentify$1(value) {
 	return typeof value === "bigint" || Number.isInteger(value);
 }
@@ -9505,7 +9505,7 @@ var schema$1 = [map$1, seq].concat(jsonScalars, {
 	}
 });
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/binary.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/binary.js
 var binary = {
 	identify: (value) => value instanceof Uint8Array,
 	default: false,
@@ -9554,7 +9554,7 @@ var binary = {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/pairs.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/pairs.js
 function resolvePairs(seq, onError) {
 	if (isSeq(seq)) for (let i = 0; i < seq.items.length; ++i) {
 		let item = seq.items[i];
@@ -9606,7 +9606,7 @@ var pairs = {
 	createNode: createPairs
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/omap.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/omap.js
 var YAMLOMap = class YAMLOMap extends YAMLSeq {
 	constructor() {
 		super();
@@ -9662,7 +9662,7 @@ var omap = {
 	createNode: (schema, iterable, ctx) => YAMLOMap.from(schema, iterable, ctx)
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/bool.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/bool.js
 function boolStringify({ value, source }, ctx) {
 	if (source && (value ? trueTag : falseTag).test.test(source)) return source;
 	return value ? ctx.options.trueStr : ctx.options.falseStr;
@@ -9684,7 +9684,7 @@ var falseTag = {
 	stringify: boolStringify
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/float.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/float.js
 var floatNaN = {
 	identify: (value) => typeof value === "number",
 	default: true,
@@ -9722,7 +9722,7 @@ var float = {
 	stringify: stringifyNumber
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/int.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/int.js
 var intIdentify = (value) => typeof value === "bigint" || Number.isInteger(value);
 function intResolve(str, offset, radix, { intAsBigInt }) {
 	const sign = str[0];
@@ -9788,7 +9788,7 @@ var intHex = {
 	stringify: (node) => intStringify(node, 16, "0x")
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/set.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/set.js
 var YAMLSet = class YAMLSet extends YAMLMap {
 	constructor(schema) {
 		super(schema);
@@ -9850,7 +9850,7 @@ var set = {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/timestamp.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/timestamp.js
 /** Internal types handle bigint as number, because TS can't figure it out. */
 function parseSexagesimal(str, asBigInt) {
 	const sign = str[0];
@@ -9927,7 +9927,7 @@ var timestamp = {
 	stringify: ({ value }) => value?.toISOString().replace(/(T00:00:00)?\.000Z$/, "") ?? ""
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/schema.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/yaml-1.1/schema.js
 var schema = [
 	map$1,
 	seq,
@@ -9952,7 +9952,7 @@ var schema = [
 	timestamp
 ];
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/tags.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/tags.js
 var schemas = /* @__PURE__ */ new Map([
 	["core", schema$2],
 	["failsafe", [
@@ -10018,7 +10018,7 @@ function getTags(customTags, schemaName, addMergeTag) {
 	}, []);
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/Schema.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/schema/Schema.js
 var sortMapEntriesByKey = (a, b) => a.key < b.key ? -1 : a.key > b.key ? 1 : 0;
 var Schema = class Schema {
 	constructor({ compat, customTags, merge, resolveKnownTags, schema, sortMapEntries, toStringDefaults }) {
@@ -10039,7 +10039,7 @@ var Schema = class Schema {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringifyDocument.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/stringify/stringifyDocument.js
 function stringifyDocument(doc, options) {
 	const lines = [];
 	let hasDirectives = options.directives === true;
@@ -10095,7 +10095,7 @@ function stringifyDocument(doc, options) {
 	return lines.join("\n") + "\n";
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/doc/Document.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/doc/Document.js
 var Document = class Document {
 	constructor(value, replacer, options) {
 		/** A comment before this Document */
@@ -10360,7 +10360,7 @@ function assertCollection(contents) {
 	throw new Error("Expected a YAML collection as document contents");
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/errors.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/errors.js
 var YAMLError = class extends Error {
 	constructor(name, pos, code, message) {
 		super();
@@ -10407,7 +10407,7 @@ var prettifyError = (src, lc) => (error) => {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-props.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-props.js
 function resolveProps(tokens, { flow, indicator, next, offset, onError, parentIndent, startOnNewline }) {
 	let spaceBefore = false;
 	let atNewline = startOnNewline;
@@ -10511,7 +10511,7 @@ function resolveProps(tokens, { flow, indicator, next, offset, onError, parentIn
 	};
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/util-contains-newline.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/util-contains-newline.js
 function containsNewline(key) {
 	if (!key) return null;
 	switch (key.type) {
@@ -10537,7 +10537,7 @@ function containsNewline(key) {
 	}
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/util-flow-indent-check.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/util-flow-indent-check.js
 function flowIndentCheck(indent, fc, onError) {
 	if (fc?.type === "flow-collection") {
 		const end = fc.end[0];
@@ -10545,7 +10545,7 @@ function flowIndentCheck(indent, fc, onError) {
 	}
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/util-map-includes.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/util-map-includes.js
 function mapIncludes(ctx, items, search) {
 	const { uniqueKeys } = ctx.options;
 	if (uniqueKeys === false) return false;
@@ -10553,7 +10553,7 @@ function mapIncludes(ctx, items, search) {
 	return items.some((pair) => isEqual(pair.key, search));
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-block-map.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-block-map.js
 var startColMsg = "All mapping items must start at the same column";
 function resolveBlockMap({ composeNode, composeEmptyNode }, ctx, bm, onError, tag) {
 	const map = new ((tag?.nodeClass) ?? YAMLMap)(ctx.schema);
@@ -10632,7 +10632,7 @@ function resolveBlockMap({ composeNode, composeEmptyNode }, ctx, bm, onError, ta
 	return map;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-block-seq.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-block-seq.js
 function resolveBlockSeq({ composeNode, composeEmptyNode }, ctx, bs, onError, tag) {
 	const seq = new ((tag?.nodeClass) ?? YAMLSeq)(ctx.schema);
 	if (ctx.atRoot) ctx.atRoot = false;
@@ -10671,7 +10671,7 @@ function resolveBlockSeq({ composeNode, composeEmptyNode }, ctx, bs, onError, ta
 	return seq;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-end.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-end.js
 function resolveEnd(end, offset, reqSpace, onError) {
 	let comment = "";
 	if (end) {
@@ -10706,7 +10706,7 @@ function resolveEnd(end, offset, reqSpace, onError) {
 	};
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-flow-collection.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-flow-collection.js
 var blockMsg = "Block collections are not allowed within flow collections";
 var isBlock = (token) => token && (token.type === "block-map" || token.type === "block-seq");
 function resolveFlowCollection({ composeNode, composeEmptyNode }, ctx, fc, onError, tag) {
@@ -10858,7 +10858,7 @@ function resolveFlowCollection({ composeNode, composeEmptyNode }, ctx, fc, onErr
 	return coll;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/compose-collection.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/compose-collection.js
 function resolveCollection(CN, ctx, token, onError, tagName, tag) {
 	const coll = token.type === "block-map" ? resolveBlockMap(CN, ctx, token, onError, tag) : token.type === "block-seq" ? resolveBlockSeq(CN, ctx, token, onError, tag) : resolveFlowCollection(CN, ctx, token, onError, tag);
 	const Coll = coll.constructor;
@@ -10900,7 +10900,7 @@ function composeCollection(CN, ctx, token, props, onError) {
 	return node;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-block-scalar.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-block-scalar.js
 function resolveBlockScalar(ctx, scalar, onError) {
 	const start = scalar.offset;
 	const header = parseBlockScalarHeader(scalar, ctx.options.strict, onError);
@@ -11073,7 +11073,7 @@ function splitLines(source) {
 	return lines;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-flow-scalar.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/resolve-flow-scalar.js
 function resolveFlowScalar(scalar, strict, onError) {
 	const { offset, type, source, end } = scalar;
 	let _type;
@@ -11273,7 +11273,7 @@ function parseCharCode(source, offset, length, onError) {
 	}
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/compose-scalar.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/compose-scalar.js
 function composeScalar(ctx, token, tagToken, onError) {
 	const { value, type, comment, range } = token.type === "block-scalar" ? resolveBlockScalar(ctx, token, onError) : resolveFlowScalar(token, ctx.options.strict, onError);
 	const tagName = tagToken ? ctx.directives.tagName(tagToken.source, (msg) => onError(tagToken, "TAG_RESOLVE_FAILED", msg)) : null;
@@ -11327,7 +11327,7 @@ function findScalarTagByTest({ atKey, directives, schema }, value, token, onErro
 	return tag;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/util-empty-scalar-position.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/util-empty-scalar-position.js
 function emptyScalarPosition(offset, before, pos) {
 	if (before) {
 		pos ?? (pos = before.length);
@@ -11351,7 +11351,7 @@ function emptyScalarPosition(offset, before, pos) {
 	return offset;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/compose-node.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/compose-node.js
 var CN = {
 	composeNode,
 	composeEmptyNode
@@ -11431,7 +11431,7 @@ function composeAlias({ options }, { offset, source, end }, onError) {
 	return alias;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/compose-doc.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/compose-doc.js
 function composeDoc(options, directives, { offset, start, value, end }, onError) {
 	const doc = new Document(void 0, Object.assign({ _directives: directives }, options));
 	const ctx = {
@@ -11465,7 +11465,7 @@ function composeDoc(options, directives, { offset, start, value, end }, onError)
 	return doc;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/composer.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/compose/composer.js
 function getErrorPos(src) {
 	if (typeof src === "number") return [src, src + 1];
 	if (Array.isArray(src)) return src.length === 2 ? src : [src[0], src[1]];
@@ -11651,7 +11651,7 @@ var Composer = class {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/parse/cst-visit.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/parse/cst-visit.js
 var BREAK = Symbol("break visit");
 var SKIP = Symbol("skip children");
 var REMOVE = Symbol("remove item");
@@ -11775,7 +11775,7 @@ function tokenType(source) {
 	return null;
 }
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/parse/lexer.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/parse/lexer.js
 function isEmpty(ch) {
 	switch (ch) {
 		case void 0:
@@ -12304,7 +12304,7 @@ var Lexer = class {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/parse/line-counter.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/parse/line-counter.js
 /**
 * Tracks newlines during parsing in order to provide an efficient API for
 * determining the one-indexed `{ line, col }` position for any offset
@@ -12348,7 +12348,7 @@ var LineCounter = class {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/parse/parser.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/parse/parser.js
 function includesToken(list, type) {
 	for (let i = 0; i < list.length; ++i) if (list[i].type === type) return true;
 	return false;
@@ -13207,7 +13207,7 @@ var Parser = class {
 	}
 };
 //#endregion
-//#region node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/public-api.js
+//#region ../../../../../../private/tmp/document-contract-yaml-deps/node_modules/.pnpm/yaml@2.9.1/node_modules/yaml/browser/dist/public-api.js
 function parseOptions(options) {
 	const prettyErrors = options.prettyErrors !== false;
 	return {

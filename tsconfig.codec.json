@@ -10,7 +10,10 @@
   "include": [
     "src/codec.ts",
     "src/schema.ts",
-    "src/source-syntax.ts"
+    "src/source-syntax.ts",
+    "src/yaml-blocks.ts",
+    "src/yaml-source-view.ts",
+    "src/runtime.ts"
   ],
   "exclude": [
     "tests",
