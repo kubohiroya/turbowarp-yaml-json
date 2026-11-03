@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@kubohiroya/turbowarp-document-source':
+        specifier: 0.2.0-rc.0
+        version: 0.2.0-rc.0
       ajv:
         specifier: ^8.17.1
         version: 8.20.0
@@ -56,6 +59,10 @@ importers:
         version: 4.1.10(@types/node@24.13.3)(vite@8.2.2(@types/node@24.13.3)(esbuild@0.28.1)(yaml@2.9.1))
 
 packages:
+
+  '@kubohiroya/turbowarp-document-source@0.2.0-rc.0':
+    resolution: {integrity: sha512-MH7LTfn32GXM8gou8ijPq11UYxklNUpYjw+AVc9YfpTZwe209Mhi07LT5dncpf0L2ApYIOGE2tpRtHhMgqWbQA==}
+    engines: {node: '>=22'}
 
   '@esbuild/aix-ppc64@0.28.1':
     resolution: {integrity: sha512-Svl7tq8k/08+p6CXPpRjQ1fKX+1odH/BQbb48fV6fj3CWHhsoIOoY87w1oHXm0qEpkIK3ZfVgp0hed3XBXzXMQ==}
@@ -1387,6 +1394,8 @@ packages:
     engines: {node: '>=10'}
 
 snapshots:
+
+  '@kubohiroya/turbowarp-document-source@0.2.0-rc.0': {}
 
   '@esbuild/aix-ppc64@0.28.1':
     optional: true

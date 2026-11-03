@@ -44,7 +44,7 @@ pnpm install --frozen-lockfile
 The package is version-pinned when used from npm:
 
 ```bash
-pnpm add --save-exact @kubohiroya/turbowarp-yaml-json@0.8.0-rc.0
+pnpm add --save-exact @kubohiroya/turbowarp-yaml-json@0.9.0-rc.0
 ```
 
 ## Quick Start
@@ -338,3 +338,7 @@ Release artifacts include `dist/turbowarp-yaml-json.js`, `dist/extension-manifes
 SPDX-License-Identifier: MPL-2.0
 
 固定入力の編集範囲・互換性・切戻しについては [固定入力の編集](docs/fixed-input-editors.ja.md) を参照してください。
+
+## YAML block source views
+
+The `/yaml-blocks`, `/source-view` and `/runtime` entry points provide generic YAML block definitions, comment-preserving source conversion and an inert companion runtime. They consume the shared `@kubohiroya/turbowarp-document-source` protocol and do not depend on document-data. Project persistence and patching belong to document-data. The runtime captures its explicit `enabled` option at startup and defaults to OFF.
