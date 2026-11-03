@@ -61,7 +61,7 @@ importers:
 packages:
 
   '@kubohiroya/turbowarp-document-source@0.2.0-rc.0':
-    resolution: {integrity: sha512-N91/G9ZZtL5WRu3CC1TQF7LQ6E50gOoxezI0muilN7Gpc5hK2ZzKtLnPO/F4JdhHlbq40E6fDdjI7N4W9RBf3Q==}
+    resolution: {integrity: sha512-MH7LTfn32GXM8gou8ijPq11UYxklNUpYjw+AVc9YfpTZwe209Mhi07LT5dncpf0L2ApYIOGE2tpRtHhMgqWbQA==}
     engines: {node: '>=22'}
 
   '@esbuild/aix-ppc64@0.28.1':
