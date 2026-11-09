@@ -110,7 +110,7 @@
     "ajv": "^8.17.1",
     "jsonc-parser": "^3.3.1",
     "yaml": "^2.9.1",
-    "@kubohiroya/turbowarp-document-source": "0.2.0-rc.0"
+    "@kubohiroya/turbowarp-document-source": "0.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",

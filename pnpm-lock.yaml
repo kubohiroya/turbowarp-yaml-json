@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@kubohiroya/turbowarp-document-source':
-        specifier: 0.2.0-rc.0
-        version: 0.2.0-rc.0
+        specifier: 0.2.0
+        version: 0.2.0
       ajv:
         specifier: ^8.17.1
         version: 8.20.0
@@ -277,8 +277,8 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
 
-  '@kubohiroya/turbowarp-document-source@0.2.0-rc.0':
-    resolution: {integrity: sha512-MH7LTfn32GXM8gou8ijPq11UYxklNUpYjw+AVc9YfpTZwe209Mhi07LT5dncpf0L2ApYIOGE2tpRtHhMgqWbQA==}
+  '@kubohiroya/turbowarp-document-source@0.2.0':
+    resolution: {integrity: sha512-IMGwU5HnNjffA6I32JCDCr0Et5UXMXMVJa6tnYvbBrvuVWTCvFilkiorpEmxWPrC5LquaaixmzQd7USUYiIw1g==}
     engines: {node: '>=22'}
 
   '@kubohiroya/turbowarp-extension-data-editor@0.8.1':
@@ -1537,7 +1537,7 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
-  '@kubohiroya/turbowarp-document-source@0.2.0-rc.0': {}
+  '@kubohiroya/turbowarp-document-source@0.2.0': {}
 
   '@kubohiroya/turbowarp-extension-data-editor@0.8.1(react@18.3.1)':
     dependencies:
