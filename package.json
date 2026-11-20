@@ -1,6 +1,6 @@
 {
   "name": "@kubohiroya/turbowarp-yaml-json",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "A safe YAML/JSON parser and immutable data builder extension for TurboWarp.",
   "author": {
     "name": "Hiroya Kubo",
@@ -125,5 +125,11 @@
     "vite": "^8.2.2",
     "vitest": "^4.1.10",
     "@kubohiroya/turbowarp-extension-data-editor": "^0.11.0"
+  },
+  "turbowarpExtension": {
+    "resourceDeclaration": {
+      "schemaVersion": 1,
+      "resources": []
+    }
   }
 }
